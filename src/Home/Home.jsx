@@ -7,6 +7,8 @@ import Slider from "../components/layout/Slider";
 import Card from "../components/layout/Card";
 import ScrollableTabsButtonForce from "../components/layout/ScrollableTabsButtonAuto";
 import Coursal from '../components/layout/Coursal'
+import Footer from "../components/layout/Footer";
+import Header from "../components/layout/Header";
 
 function Home() {
   let sliderData = [
@@ -120,10 +122,18 @@ function Home() {
     },
   ];
   let slides = [
-    "https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg",
-    "https://wallpapercave.com/wp/wp3386769.jpg",
-    "https://wallpaperaccess.com/full/809523.jpg",
-    "https://getwallpapers.com/wallpaper/full/5/c/0/606489.jpg",
+    {src:"https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg",Component:
+    <div className=""> 
+      <h1 className="w-[699px] h-[136px] text-zinc-800 text-[46px] font-extrabold font-['Plus Jakarta Sans'] " >Help rebuild earthquake hit schools in Morocco!</h1> 
+      <p className="w-[599px] text-gray-500 text-[18px] font-normal font-['Encode Sans'] leading-9">Schools in Morocco are damaged severely with the recent earthquake. Help us rebuilt schools and get children back to School </p> 
+      <button className='px-3 cursor-pointer py-2 mt-3 bg-gradient-to-r from-amber-500 to-rose-500 rounded-lg justify-center items-center gap-2.5 inline-flex'>
+      <p className=" text-white text-xl font-black font-['Satoshi Variable'] leading-9">Donate for the cause</p></button>
+       </div>},
+       
+    // {images: [{name:'',src:'..///'},{name:'',src:'.//'}] }
+    // "https://wallpapercave.com/wp/wp3386769.jpg",
+    // "https://wallpaperaccess.com/full/809523.jpg",
+    // "https://getwallpapers.com/wallpaper/full/5/c/0/606489.jpg",
   ];
 
   return (
@@ -131,6 +141,7 @@ function Home() {
         <div className="w-full">
         <Coursal slides={slides} />
         </div>
+        {/* <Header /> */}
 
       <div
         className="flex  items-center justify-between px-[80px] flex-wrap h-full"
@@ -316,21 +327,8 @@ function Home() {
             );
           })}
       </div>
-      <div className="flex mt-[140px] justify-center">
-        <div className='footer  text-center'>
-          <p className="footer_text w-[80%] ml-28">
-          Ready to make an Impact? Join thousands of others today
-          </p>
-          <div className="flex justify-center my-10 gap-4">
-            <button>
-              <img src={images.Button4}/>
-            </button>
-            <button>
-               <img src={images.Button3} />
-            </button>
-          </div>
-        </div>
-      </div>
+      <Footer />
+
     </>
   );
 }

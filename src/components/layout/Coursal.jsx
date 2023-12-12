@@ -28,7 +28,16 @@ export default function Carousel({ slides }) {
         }}
       >
         {slides.map((s) => {
-          return <img src={s} />;
+          return (
+          <div className="flex w-[100%] justify-center h-full">
+          <div className="w-[45%] pl-14 py-[100px] ml-6 "> 
+          {s.Component}
+          </div>
+          <div className="w-[55%]">
+          <img src={s?.src} />
+          </div>
+          </div>)
+          // return <S />;
         })}
       </div>
 
