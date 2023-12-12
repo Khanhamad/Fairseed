@@ -38,7 +38,7 @@ import Airlogo from '../assets/Airlogo.png'
 import  Rectangle  from '../assets/Rectangle.png'
 import Button3 from '../assets/Button3.png'
 import Button4 from '../assets/Button4.png'
-
+import LogoFooter from '../assets/LogoFooter.png'
 
 
 
@@ -82,7 +82,8 @@ export default {
     Airlogo,
     Rectangle,
     Button3,
-    Button4 
+    Button4,
+    LogoFooter  
 
     
    
