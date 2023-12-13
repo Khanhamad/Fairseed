@@ -1,7 +1,10 @@
-.navbar{
-    width: Fixed (1,920px);
-height: Hug (84px);
-padding: 16px, 90px, 16px, 90px;
-justify-content: space-between;
 
+.Navbar{
+display: flex;
+width: 1920px;
+padding: var(--Spacing-16, 16px) 90px;
+justify-content: space-between;
+align-items: center;
+background: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.21) 100%);
+backdrop-filter: blur(12px);
 }
