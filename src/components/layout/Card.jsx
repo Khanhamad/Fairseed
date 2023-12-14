@@ -55,8 +55,8 @@ import LinearWithValueLabel from '../LinearWithValueLabel';
                   style={{ backgroundColor: "rgba(255, 246, 245, 1)" }}
                 >
                   <div className="flex ">
-                    <img className="text-[1px]" src={images?.Coins} />
-                    <p className="pl-0.5    text-[15px] ">Donate</p>
+                    <img className="" src={images?.Coins} />
+                    <p className="pl-1   text-[17px] ">Donate</p>
                   </div>
                 </button>
               </div>

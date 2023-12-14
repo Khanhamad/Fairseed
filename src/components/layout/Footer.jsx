@@ -1,7 +1,7 @@
 import React from "react";
 import images from "../../constants/images";
 import { TiSocialTwitter } from "react-icons/ti";
-import { GrInstagram } from "react-icons/gr";
+import { FiInstagram } from "react-icons/fi";
 import { RiPinterestLine } from "react-icons/ri";
 import { RiYoutubeLine } from "react-icons/ri";
 
@@ -45,7 +45,7 @@ function Footer() {
       </div>
       <div className="flex flex-row justify-between"
       >
-        <img className="w-[350px] h-full " src={images.LogoFooter} />
+        <img className="w-[370px] h-full " src={images.LogoFooter} />
         <div className="flex flex-col justify-start">
           <a
             className="text-white font-bold"
@@ -185,7 +185,7 @@ function Footer() {
           >
             Newsletter
           </a>
-          <div className="flex mt-3 flex-row rounded-lg w-[40%] h-8">
+          <div className="flex mt-3 flex-row rounded-lg w-[40%] h-10">
             <input
               className="text-[15px] pl-4"
               aria-label="Demo input"
@@ -264,7 +264,7 @@ function Footer() {
                 }}
                 href="#"
               >
-              <GrInstagram />
+             <FiInstagram />
               </a>
               <a
                 className="text-white/80 ml-3  text-3xl"

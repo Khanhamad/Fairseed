@@ -1,70 +1,109 @@
-import { useState } from "react";
-import {
-  BsFillArrowRightCircleFill,
-  BsFillArrowLeftCircleFill,
-} from "react-icons/bs";
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 
-export default function Carousel({ slides }) {
-  let [current, setCurrent] = useState(0);
+import { Swiper, SwiperSlide } from "swiper/react";
 
-  let previousSlide = () => {
-    if (current === 0) setCurrent(slides.length - 1);
-    else setCurrent(current - 1);
-  };
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+let slides = [
+  {
+    src: "https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg",
+    Component: (
+      <div className="w-[100%]">
+        <h1 className="w-[799px]  h-[136px] text-white/70 text-[56px] font-extrabold font-['Plus Jakarta Sans'] ">
+          Help rebuild earthquake hit schools in Morocco!
+        </h1>
+        <p className="w-[699px] text-gray-500 text-[24px] font-normal font-['Encode Sans'] leading-8">
+          Schools in Morocco are damaged severely with the recent earthquake.
+          Help us rebuilt schools and get children back to School
+        </p>
+        <button className="px-3 cursor-pointer py-2 mt-4 bg-gradient-to-r from-amber-500 to-rose-500 rounded-lg justify-center items-center gap-2.5 inline-flex">
+          <a className=" text-white text-xl font-black font-['Satoshi Variable'] leading-9">
+            Donate for the cause
+          </a>
+        </button>
+      </div>
+    ),
+  },
+];
 
-  let nextSlide = () => {
-    if (current === slides.length - 1) setCurrent(0);
-    else setCurrent(current + 1);
-  };
-
+export default () => {
   return (
-    <div className="overflow-hidden  relative">
-      <div
-        className={`flex transition ease-out duration-40`}
-        style={{
-          transform: `translateX(-${current * 100}%)`,
-        }}
-      >
-        {slides.map((s) => {
-          return (
-          <div className="flex w-[100%] justify-center h-full">
-          <div className="w-[45%] pl-14 py-[100px] ml-6 "> 
-          {s.Component}
-          </div>
-          <div className="w-[55%]">
-          <img src={s?.src} />
-          </div>
-          </div>)
-          // return <S />;
-        })}
-      </div>
+    <Swiper
+      // install Swiper modules
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      spaceBetween={50}
+      slidesPerView={1}
+      navigation
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log("slide change")}
+    >
+      <SwiperSlide>
+        <div>
+          {slides.map((s) => {
+            return (
+              <div className="flex w-[100%]  justify-center relative h-full">
+                <img src={s?.src} />
 
-      <div className="absolute top-0 h-full w-full justify-between items-center flex  text-black/50 px-10 text-3xl">
-        <button className='bg-white/30 pl-1 w-10 h-10 rounded-full' onClick={previousSlide}>
-        <FaChevronLeft />
-        </button>
-        <button className='bg-white/30 pl-1.5 w-10 h-10 rounded-full'  onClick={nextSlide}>
-        <FaChevronRight />
-        </button>
-      </div>
+                <div className="w-[45%] absolute top-[22rem] left-[4rem] ml-6 ">{s.Component}</div>
+                <div className="w-[55%]"></div>
+              </div>
+            );
+            // return <S />;
+          })}
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div>
+          {slides.map((s) => {
+            return (
+              <div className="flex w-[100%] justify-center relative h-full">
+                <img src={s?.src} />
 
-      <div className="absolute bottom-0 py-4 flex justify-center gap-3 w-full">
-        {slides.map((s, i) => {
-          return (
-            <div
-              onClick={() => {
-                setCurrent(i);
-              }}
-              key={"circle" + i}
-              className={`rounded-full w-3 h-3 cursor-pointer  ${
-                i == current ? "bg-red-400" : "bg-red-100"
-              }`}
-            ></div>
-          );
-        })}
-      </div>
-    </div>
+                <div className="w-[45%] absolute top-[22rem] left-[4rem]  ml-6 ">{s.Component}</div>
+                <div className="w-[55%]"></div>
+              </div>
+            );
+            // return <S />;
+          })}
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div>
+          {slides.map((s) => {
+            return (
+              <div className="flex w-[100%] justify-center relative h-full">
+                <img src={s?.src} />
+
+                <div className="w-[45%] absolute top-[22rem] left-[4rem]  ml-6 ">{s.Component}</div>
+                <div className="w-[55%]"></div>
+              </div>
+            );
+            // return <S />;
+          })}
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div>
+          {slides.map((s) => {
+            return (
+              <div className="flex w-[100%] justify-center relative h-full">
+                <img src={s?.src} />
+
+                <div className="w-[45%] absolute top-[22rem] left-[4rem]  ml-6 ">{s.Component}</div>
+                <div className="w-[55%]"></div>
+              </div>
+            );
+            // return <S />;
+          })}
+        </div>
+      </SwiperSlide>
+      ...
+    </Swiper>
   );
-}
+};

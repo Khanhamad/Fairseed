@@ -39,6 +39,9 @@ import  Rectangle  from '../assets/Rectangle.png'
 import Button3 from '../assets/Button3.png'
 import Button4 from '../assets/Button4.png'
 import LogoFooter from '../assets/LogoFooter.png'
+import Logo from '../assets/Logo.png'
+import HeroSection from '../assets/HeroSection.png'
+import HeaderBgImg from '../assets/HeaderBgImg.png'
 
 
 
@@ -83,7 +86,10 @@ export default {
     Rectangle,
     Button3,
     Button4,
-    LogoFooter  
+    LogoFooter,
+    Logo,
+    HeroSection,
+    HeaderBgImg  
 
     
    
