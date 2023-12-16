@@ -42,10 +42,22 @@ import LogoFooter from '../assets/LogoFooter.png'
 import Logo from '../assets/Logo.png'
 import HeroSection from '../assets/HeroSection.png'
 import HeaderBgImg from '../assets/HeaderBgImg.png'
+import one from '../assets/one.svg'
+import two from '../assets/two.svg'
+import three from '../assets/three.svg'
+import person from '../assets/person.svg'
+import pencicon from '../assets/pencicon.svg'
+import Home from '../assets/Home.svg'
+import FooterLogo from '../assets/FooterLogo.png'
+import HeaderColor from '../assets/HeaderColor.svg'
+import  RocketLaunch  from '../assets/RocketLaunch.png' 
+import  coins2 from '../assets/Coins2.svg'
+import  RocketLaunch2  from '../assets/RocketLaunch2.svg'
 
 
 
-export default {
+
+export default  {
     SedalCheck,
     Student,
     UsersThree,
@@ -89,7 +101,18 @@ export default {
     LogoFooter,
     Logo,
     HeroSection,
-    HeaderBgImg  
+    HeaderBgImg,
+    one,
+    two,
+    three,
+    person,
+    pencicon,
+    Home,
+    FooterLogo,
+    HeaderColor,
+    RocketLaunch,
+    RocketLaunch2,
+    coins2
 
     
    

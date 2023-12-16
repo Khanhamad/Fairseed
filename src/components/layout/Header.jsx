@@ -17,7 +17,7 @@ function Header() {
                 </div>
                 <div className="pl-2 flex-col justify-start items-start gap-2.5 flex">
                     <div className="px-7 py-4 bg-gradient-to-r from-amber-500 to-rose-500 rounded-lg justify-center items-center gap-2.5 inline-flex">
-                        <div className="text-white text-2xl font-black font-['Satoshi Variable'] leading-9">Donate for the Cause</div>
+                        <div className="text-white text-2xl font-black font-['Satoshi'] leading-9">Donate for the Cause</div>
                     </div>
                 </div>
             </div>

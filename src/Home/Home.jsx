@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import images from "../constants/images";
-import icons from "../constants/icons";
+// import icons from "../constants/icons";
 import button from "../constants/button";
 import Slider from "../components/layout/Slider";
 import Card from "../components/layout/Card";
@@ -12,50 +12,7 @@ import Navbar from "../Navbar/Navbar";
 import DashBoard from "../components/layout/DashBoard";
 
 function Home() {
-  let sliderData = [
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-    {
-      sliderText: "Early Childhood Education",
-    },
-  ];
+  
   let bnk = [
     {
       title: "Help me fund my College Fees for Harvard University",
@@ -122,80 +79,107 @@ function Home() {
       daysLeft: "10 Days Left",
     },
   ];
- 
-    
-    
-    
 
-    // {images: [{name:'',src:'..///'},{name:'',src:'.//'}] }
-    // "https://wallpapercave.com/wp/wp3386769.jpg",
-    // "https://wallpaperaccess.com/full/809523.jpg",
-    // "https://getwallpapers.com/wallpaper/full/5/c/0/606489.jpg",
+  // {images: [{name:'',src:'..///'},{name:'',src:'.//'}] }
+  // "https://wallpapercave.com/wp/wp3386769.jpg",
+  // "https://wallpaperaccess.com/full/809523.jpg",
+  // "https://getwallpapers.com/wallpaper/full/5/c/0/606489.jpg",
 
-   let Dboard = [
+  let Dboard = [
     {
-      DashBoardImg:'../constants/images/HandShake.png',
-      DashBoardTotal:4,
-      DashBoardText:'Causes Raised'
-
+      DashBoardImg: images.HandShake,
+      DashBoardTotal: 4,
+      DashBoardText: "Causes Raised",
     },
     {
-      DashBoardImg:"https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg",
-      DashBoardTotal:'27 Lacs',
-      DashBoardText:'Funds Raised'
-
+      DashBoardImg: images.UsersThree,
+      DashBoardTotal: "27 Lacs",
+      DashBoardText: "Funds Raised",
     },
     {
-      DashBoardImg:'../constants/images/HandShake.png',
-      DashBoardTotal:'3000+',
-      DashBoardText:'Donors'
-
+      DashBoardImg: images.Student,
+      DashBoardTotal: "3000+",
+      DashBoardText: "Donors",
     },
     {
-      DashBoardImg:"https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg",
-      DashBoardTotal:4,
-      DashBoardText:'Successful Campaigns'
-
+      DashBoardImg: images.HandCoins,
+      DashBoardTotal: 4,
+      DashBoardText: "Successful Campaigns",
     },
     {
-      DashBoardImg:"https://i.pinimg.com/originals/51/82/ac/5182ac536727d576c78a9320ac62de30.jpg",
-      DashBoardTotal:3,
-      DashBoardText:'Student Benefitted'
-
-    }
-   ];
+      DashBoardImg: images.SedalCheck,
+      DashBoardTotal: 3,
+      DashBoardText: "Student Benefitted",
+    },
+  ];
 
   return (
     <>
       <div className="">
-      <Navbar />
+        <Navbar />
       </div>
-      <div className="w-full ">
-        <Coursal  />
+      <div>
+        <Coursal />
       </div>
-
-      <div style={{width: '100%', height: '100%', paddingLeft: 96, paddingRight: 96, paddingTop: 48, paddingBottom: 48, background: '#FFF6F5', justifyContent: 'space-between', alignItems: 'flex-start', display: 'inline-flex'}}>
-      {Dboard?.map((item) => {
-            return (
-              <DashBoard
-               DashBoardText={item.DashBoardText}
-               DashBoardTotal={item.DashBoardTotal}
-              />
-            );
-          })}
+      <div
+        className="bg-[#FFF6F5]"
+        style={{
+          width: "100%",
+          height: "100%",
+          paddingLeft: 96,
+          paddingRight: 96,
+          paddingTop: 48,
+          paddingBottom: 48,
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          display: "flex",
+        }}
+      >
+        {Dboard?.map((item) => {
+          return (
+            <DashBoard
+              //  DashBoardText={item.DashBoardText}
+              //  DashBoardTotal={item.DashBoardTotal}
+              //  DashBoardImg={item?.DashBoardImg}
+              data={item}
+            />
+          );
+        })}
       </div>
-      <div className="flex pt-[100px]">
+      <div className="flex pt-[100px] ">
         <div className="w-full flex-wrap flex flex-col items-center mx-10">
-          <h1 className="text-4xl font-bold pb-4">Ongoing Campaigns</h1>
+          <h1
+            className="text-4xl font-bold pb-4"
+            style={{ fontFamily: "Satoshi" }}
+          >
+            Ongoing Campaigns
+          </h1>
           <div className="flex flex-col  text-center text-black/100 mb-6">
-            <button>
-              <img src={images.TextSeeAll} />
+            <button
+              style={{
+                width: "100%",
+                textAlign: "center",
+                fontSize: 24,
+                fontFamily: "Satoshi",
+                fontWeight: "500",
+                wordWrap: "break-word",
+                background:
+                  "linear-gradient(to right, #FF9F0A 0%, #FF375F 62.9%)",
+                "-webkit-background-clip": "text",
+                "-webkit-text-fill-color": "transparent",
+                textDecoration: "underline",
+                position: "relative",
+              }}
+            >
+              <p className="gradient-button mb-0">
+                See all 724 active campaigns
+              </p>
             </button>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col flex-wrap w-full   py-6 px-7 mb-11 items-center">
+      <div className="flex flex-col flex-wrap w-full   py-6  mb-11 items-center">
         <div className="flex  pt-[20px] ">
           <ScrollableTabsButtonForce />
           <button
@@ -206,7 +190,7 @@ function Home() {
             <img src={images.Filter} />
           </button>
         </div>
-        <div className="gap-4 mt-4 flex flex-wrap w-[93%] px-5">
+        <div className="gap-4 mt-4  flex flex-wrap w-full justify-center">
           {bnk?.map((item) => {
             return (
               <Card
@@ -220,41 +204,214 @@ function Home() {
             );
           })}
         </div>
-        <button className="pt-[68px]">
-          <img src={button.LoadMore} />
+        <button
+          className="pt-[68px]"
+          style={{
+            width: "fit-content",
+            textAlign: "center",
+            color: "#FF9F0A",
+            fontSize: 24,
+            fontFamily: "Satoshi",
+            fontWeight: "500",
+            textDecoration: "underline",
+            wordWrap: "break-word",
+            background: "linear-gradient(to right, #FF9F0A 0%, #FF375F 62.9%)",
+            "-webkit-background-clip": "text",
+            "-webkit-text-fill-color": "transparent",
+            textDecoration: "underline",
+            position: "relative",
+          }}
+        >
+          <p className="gradient-button mb-0">Load More</p>
         </button>
       </div>
-      <div
-        className="flex flex-col flex-wrap w-full   py-8 px-7  items-center"
-        style={{ backgroundColor: "rgba(255, 246, 245, 1)" }}
-      >
-        <h1 className="font-bold pt-[4rem] text-4xl">How it Works</h1>
-        <div className="flex-row p-5 flex justify-center gap-10 flex-wrap w-full ">
-          <img className="w-[20%] h-[20%]" src={images.StepsTitle} />
-          <img className="w-[60px] pt-[140px] h-[100%]" src={images.Arrow} />
-          <img className="w-[20%] h-[20%]" src={images.StepsTitle2} />
-          <img className="w-[60px] pt-[140px] h-[100%]" src={images.Arrow} />
-          <img className="w-[20%] h-[20%]" src={images.StepsTitle3} />
+      <section className="bg-[#FFF6F5]">
+        <div
+          className="flex flex-col flex-wrap w-full   py-8 px-7  items-center"
+          style={{ backgroundColor: "rgba(255, 246, 245, 1)" }}
+        >
+          <h1
+            className="font-bold pt-[4rem] text-4xl"
+            style={{ fontFamily: "Satoshi", fontWeight: 800 }}
+          >
+            How it Works
+          </h1>
+          <div className="  grid grid-cols-11  mt-12 place-items-center  w-full ">
+            <div className="col-span-3 grid grid-cols-1  place-items-center">
+              <div className="">
+                <img className="w-[65%]" src={images.person} alt="" />
+              </div>
+              {/* <div className="grid grid-cols-12 mt-4"> */}
+              <div className="flex justify-between grid-cols-12 mt-4">
+                <div>
+                  <img className="mr-3 col-span-2" src={images.one} alt="" />
+                </div>
+                <div className=" ml-2 col-span-10">
+                  <h1
+                    className=""
+                    style={{
+                      color: "#4A4E5A",
+                      fontSize: 28,
+                      fontFamily: "Satoshi",
+                      fontWeight: "900",
+                      wordWrap: "break-word",
+                    }}
+                  >
+                    Create your Profile
+                  </h1>
+                  <p
+                    className=""
+                    style={{
+                      width: "100%",
+                      color: "#6B7280",
+                      fontSize: 20,
+                      fontFamily: "Satoshi",
+                      fontWeight: "500",
+                      wordWrap: "break-word",
+                    }}
+                  >
+                    Start with the basics
+                    <br /> Kick things off with your
+                    <br /> name and location.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <img className="col-span-1 " src={images.Arrow} />
+            <div className="col-span-3 grid grid-cols-1 place-items-center">
+              <div className="">
+                <img className="w-[65%]" src={images.pencicon} alt="" />
+              </div>
+              {/* <div className="grid grid-cols-12 mt-4"> */}
+              <div className="flex justify-between grid-cols-12 mt-4">
+                <div>
+                  <img className=" mr-3 col-span-2" src={images.two} alt="" />
+                </div>
+                <div className=" ml-2 col-span-10">
+                  <h1
+                    className=""
+                    style={{
+                      color: "#4A4E5A",
+                      fontSize: 28,
+                      fontFamily: "Satoshi ",
+                      fontWeight: "900",
+                      wordWrap: "break-word",
+                    }}
+                  >
+                    Fill Cause Information
+                  </h1>
+                  <p
+                    className=""
+                    style={{
+                      width: "100%",
+                      color: "#6B7280",
+                      fontSize: 20,
+                      fontFamily: "Satoshi",
+                      fontWeight: "500",
+                      wordWrap: "break-word",
+                    }}
+                  >
+                    Tell your story
+                    <br /> We'll guide you with tips
+                    <br /> along the way.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <img className="col-span-1" src={images.Arrow} />
+            <div className="col-span-3 grid grid-cols-1  place-items-center">
+              <div className="">
+                <img className="w-[65%]" src={images.Home} alt="" />
+              </div>
+              {/* <div className="grid grid-cols-12 mt-4"> */}
+              <div className="flex justify-between grid-cols-12 mt-4">
+                <div>
+                  <img className="mr-3  col-span-2" src={images.three} alt="" />
+                </div>
+                <div className=" ml-2 col-span-10">
+                  <h1
+                    className=""
+                    style={{
+                      color: "#4A4E5A",
+                      fontSize: 28,
+                      fontFamily: "Satoshi",
+                      fontWeight: "900",
+                      wordWrap: "break-word",
+                    }}
+                  >
+                    Update Acc details
+                  </h1>
+                  <p
+                    className=""
+                    style={{
+                      width: "100%",
+                      color: "#6B7280",
+                      fontSize: 20,
+                      fontFamily: "Satoshi",
+                      fontWeight: "500",
+                      wordWrap: "break-word",
+                    }}
+                  >
+                    Upload ID and a valid
+                    <br /> account number. Our team
+                    <br /> will verify the same.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            className="p-2 my-10"
+            style={{
+              background: "linear-gradient(71deg, #FF9F0A 0%, #FF375F 100%)",
+              borderRadius: 8,
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 10,
+              display: "inline-flex",
+            }}
+          >
+            <div style={{ width: 32, height: 32, position: "relative" }}>
+              <img src={images.RocketLaunch} alt="" />
+            </div>
+            <div
+              style={{
+                color: "white",
+                fontSize: 20,
+                fontFamily: "Satoshi Variable",
+                fontWeight: "900",
+                wordWrap: "break-word",
+                fontFamily:'satoshi'
+              }}
+            >
+              Launch a Campaign Now !
+            </div>
+          </button>
         </div>
-        <button className="my-[60px] w-[12%] ">
-          <img className="w-full " src={button.Button2} />
-        </button>
-      </div>
-      <div className="flex-col mt-[60px] flex-wrap flex w-full text-center items-center">
-        <h1 className="text-4xl font-bold">Causes by Category</h1>
-        <p className="text-black/40 mt-3 w-[33%]" >
+      </section>
+      <div className="flex-col pt-[60px] pb-[50px] flex-wrap container flex w-full text-center items-center">
+        <h1
+          className="text-4xl font-bold"
+          style={{ fontFamily: "Satoshi", fontWeight: 800 }}
+        >
+          Causes by Category
+        </h1>
+        <p
+          className="text-black/40 font-bold mt-3 w-[33%]"
+          style={{ fontFamily: "Satoshi" }}
+        >
           Be it for a personal need, social cause or a creative idea - you can
           count on us for the project that you want to raise funds for.
         </p>
       </div>
-      <div className="flex flex-wrap justify-center mt-[70px] gap-4 px-[50px] ">
-        {sliderData?.map((item) => {
-          return (
-            <Slider sliderText={item?.sliderText} sliderImg={item?.sliderImg} />
-          );
-        })}
+      <div className="flexDirection:'row' mt-[80px] gap-5 px-[50px] ">
+      
+      <Slider />
+
+          </div>
+      <div className="">
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }

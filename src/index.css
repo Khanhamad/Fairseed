@@ -2,3 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.cdnfonts.com/css/satoshi');
+ *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ }
+.container{
+  max-width: 1920px;
+  margin: auto;
+}
+
+.gradient-button::after {
+  background: linear-gradient(to right, #FF9F0A 0%, #FF375F 62.9%);  
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+}

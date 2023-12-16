@@ -1,32 +1,109 @@
-import React from 'react'
-import images from '../../constants/images'
+import React, { Component } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./Slider.css";
+import images from "../../constants/images";
+let sliderData = [
+  {
+    
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+  {
+    Image:images.sliderimg,
+    sliderText: "Early Childhood Education",
+  },
+];
 
-function Slider({sliderText,sliderImg}) {
-// firststarr =[]
-// scndarr=[]
-  return (
-  
-     <>
-        <div className='text-center'>
-            <img className='w-[200px] rounded-xl h-[200px]' src={images.Maskgroup2} />
-            <p className='pt-3 w-[90%]'>{sliderText}</p>
-        </div>
 
-{/* <div className='flex gap-x-2 justify-between items-center'>
-{firststarr?.map(item => {
-  return <div> <img src={item?.src} alt="" /> <p>guefidwjefh</p> </div>
-})}
-</div>
-<div className='flex gap-x-2 justify-between items-center'>
-{scndarr?.map(item => {
-  return <div> <img src={item?.src} alt="" /> <p>guefidwjefh</p> </div>
-})}
-</div> */}
 
-    </>    
-      
+export default class MultipleRows extends Component {
+  render() {
+    // this.props.data
+    const settings = {
+      dots: true,
+      className: "center  ",
+      centerMode: false,
+      infinite: false,
+      // variableWidth: true,
+      // centerPadding: "100px",
+      slidesToShow: 6,
+      speed: 1000,
+      rows: 2,
+      slidesPerRow: 1
+    };
 
-  )
+    return (
+      <div className="slider-container">
+        <Slider {...settings} >
+          {sliderData.map((items) => {
+            return (
+              <>
+
+                <div>
+                <img style={{ width: '250px', height: '200px', background: 'linear-gradient(0deg, #EBEBEB 0%, #EBEBEB 100%)', borderRadius: 12 }} src={items.Image} />
+                  
+                </div>
+                <div className="p-3 text-xl w-[90%] text-center" style={{ fontFamily: 'Satoshi ' ,color: '#383A42',fontWeight: '500' }}>
+                <h3>{items.sliderText}</h3>
+                </div>
+
+              </>
+            )
+          })}
+          {/* <h2>Multiple Rows</h2> */}
+        </Slider>
+      </div>
+    );
+  }
 }
 
-export default Slider

@@ -15,7 +15,7 @@ import LinearWithValueLabel from '../LinearWithValueLabel';
     return (
         <>
             
-            <div className="card rounded-xl" style={{ width: "23rem" }}>
+            <div className="card rounded-xl font-bold" style={{ width: "23rem",fontFamily:'satoshi' }}>
                 {/* <div style={{backgroundImage:'url{blob:https://www.figma.com/23aaba04-b230-4e67-98b4-b1e815583174}'}} className="card-img-top" alt="..." >
                  <div className=' flex m-3 bg-transparent'>
                      <img src={images.TrendUp}/>
@@ -28,7 +28,7 @@ import LinearWithValueLabel from '../LinearWithValueLabel';
                     <img className='w-[6%] h-[6%]' src={images.Airlogo}/>
                     <p className='text-black/40 pl-2 text-[15px]'>Teach for india Foundation</p>
                 </div>
-                <p className="card-text w-[80%] pt-2 pb-4  text-1xl font-bold">
+                <p className="card-text w-full pt-2 pb-4  text-1xl font-bold" style={{fontWeight: '700',fontSize: 20}}>
                     {title}
                 </p>
                 <p className="text-black/40">
@@ -37,9 +37,8 @@ import LinearWithValueLabel from '../LinearWithValueLabel';
                 </p>
                 {/* <img className="pt-1 pb-6" src={images?.range2}></img> */}
                 <div className='pt-1 pb-4 '>
-                {val?.map((item) => {
-                   return <LinearWithValueLabel actualvalue={item?.actualvalue} totalValue={item?.totalValue}/>
-                })}
+                   <LinearWithValueLabel />
+           
                 {/* <ProgressBar/> */}
                 
                 </div>
