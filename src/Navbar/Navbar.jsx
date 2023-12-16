@@ -18,6 +18,12 @@ import someImage from '../constants/images';
 import { OutlineIconName } from '@heroicons/react/outline';
 import images from '../constants/images';
 
+  
+  
+  
+  
+  const  Navbar = ({headerBackgroundImage})=> {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
 
 const products = [
@@ -36,15 +42,18 @@ const callsToAction = [
 //   return classes.filter(Boolean).join(' ')
 //  console.log(classes);
 
+// const Navbar = ({ headerBackgroundImage }) => {
+  const navbarStyle = {
+    backdropFilter: 'blur(10px)', 
+  };
 
-function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+
+ 
   return (
-    <header className="bg-indigo-500 opacity-90" style={{ backgroundColor: '#8EC5FC',
-    backgroundImage: 'linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)', 
+    <header className="absolute top-0 left-0 right-0 bg-transparent z-10 " style={{ backgroundColor: '#8EC5FC',
     }}>
-      <nav className="mx-auto flex max-w-9xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav className=" navbar mx-auto flex max-w-9xl items-center justify-between p-6 lg:px-8" aria-label="Global" style={navbarStyle}>
         <div className="flex lg:flex ">
           <a href="#" >
             <span className="sr-only">FairSeed </span>
@@ -67,7 +76,7 @@ function Example() {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
-            <Popover.Button className="flex py-3 items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+            <Popover.Button style={{fontFamily:'Satoshi Variable'}} className="flex py-3 items-center gap-x-1 text-sm font-semibold !font-['Satoshi Variable'] leading-6 text-gray-900">
               Get Involved
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
   <path d="M16.6927 8.44219L10.4427 14.6922C10.3846 14.7503 10.3157 14.7964 10.2398 14.8279C10.164 14.8593 10.0826 14.8755 10.0005 14.8755C9.91836 14.8755 9.83703 14.8593 9.76115 14.8279C9.68528 14.7964 9.61635 14.7503 9.5583 14.6922L3.3083 8.44219C3.2208 8.35478 3.16119 8.24337 3.13704 8.12207C3.11288 8.00076 3.12526 7.87502 3.1726 7.76076C3.21995 7.64649 3.30013 7.54884 3.403 7.48017C3.50587 7.41151 3.62681 7.3749 3.75049 7.375H16.2505C16.3742 7.3749 16.4951 7.41151 16.598 7.48017C16.7009 7.54884 16.781 7.64649 16.8284 7.76076C16.8757 7.87502 16.8881 8.00076 16.8639 8.12207C16.8398 8.24337 16.7802 8.35478 16.6927 8.44219Z" fill="url(#paint0_linear_126_1927)"/>
@@ -127,7 +136,7 @@ function Example() {
           {/*  second button */}
 
           <Popover className="relative">
-            <Popover.Button className="flex py-3 items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+            <Popover.Button style={{fontFamily:'Satoshi Variable'}} className="flex py-3 items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
               Our impact
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
   <path d="M16.6927 8.44219L10.4427 14.6922C10.3846 14.7503 10.3157 14.7964 10.2398 14.8279C10.164 14.8593 10.0826 14.8755 10.0005 14.8755C9.91836 14.8755 9.83703 14.8593 9.76115 14.8279C9.68528 14.7964 9.61635 14.7503 9.5583 14.6922L3.3083 8.44219C3.2208 8.35478 3.16119 8.24337 3.13704 8.12207C3.11288 8.00076 3.12526 7.87502 3.1726 7.76076C3.21995 7.64649 3.30013 7.54884 3.403 7.48017C3.50587 7.41151 3.62681 7.3749 3.75049 7.375H16.2505C16.3742 7.3749 16.4951 7.41151 16.598 7.48017C16.7009 7.54884 16.781 7.64649 16.8284 7.76076C16.8757 7.87502 16.8881 8.00076 16.8639 8.12207C16.8398 8.24337 16.7802 8.35478 16.6927 8.44219Z" fill="url(#paint0_linear_126_1927)"/>
@@ -188,7 +197,7 @@ function Example() {
 
           {/* third button */}
           <Popover className="relative">
-            <Popover.Button className="flex py-3 items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+            <Popover.Button style={{fontFamily:'Satoshi Variable'}} className="flex py-3 items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 ">
               About us
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
   <path d="M16.6927 8.44219L10.4427 14.6922C10.3846 14.7503 10.3157 14.7964 10.2398 14.8279C10.164 14.8593 10.0826 14.8755 10.0005 14.8755C9.91836 14.8755 9.83703 14.8593 9.76115 14.8279C9.68528 14.7964 9.61635 14.7503 9.5583 14.6922L3.3083 8.44219C3.2208 8.35478 3.16119 8.24337 3.13704 8.12207C3.11288 8.00076 3.12526 7.87502 3.1726 7.76076C3.21995 7.64649 3.30013 7.54884 3.403 7.48017C3.50587 7.41151 3.62681 7.3749 3.75049 7.375H16.2505C16.3742 7.3749 16.4951 7.41151 16.598 7.48017C16.7009 7.54884 16.781 7.64649 16.8284 7.76076C16.8757 7.87502 16.8881 8.00076 16.8639 8.12207C16.8398 8.24337 16.7802 8.35478 16.6927 8.44219Z" fill="url(#paint0_linear_126_1927)"/>
@@ -285,7 +294,8 @@ function Example() {
         
         
       </nav>
-      <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+
+      <Dialog as="div" className="lg:hidden max-w-[1365px]" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
@@ -308,7 +318,7 @@ function Example() {
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 font-['Satoshi Variable']">
                         Product
                         <ChevronDownIcon
                           className={(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -332,14 +342,14 @@ function Example() {
                 </Disclosure>
                 <a
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 font-['Satoshi Variable']"
                 >
                   Features
                 </a>
                 
                 <a
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 font-['Satoshi Variable']"
                 >
                   Company
                 </a>
@@ -347,7 +357,7 @@ function Example() {
               <div className="py-2" style={{ backgroundColor: '#FBAB7E', backgroundImage: 'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 50%)', height: '100px', width: '20px' }}>
                 <a
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 "
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 font-['Satoshi Variable']"
                 >
                   Log in
                 </a>
@@ -362,4 +372,6 @@ function Example() {
 }
 
 
-export default Example 
+
+
+export default Navbar;

@@ -15,4 +15,14 @@ font-size: 46px;
 font-style: normal;
 font-weight: 500;
 line-height: 130%; /* 72.8px */
+font-family: 'Satoshi', sans-serif;
+}
+
+h1{
+  font-family: 'Satoshi Variable';
+}
+
+
+.slick-slider .slick-track {
+  margin-bottom: 20px; /* Adjust the value to set the desired space between rows */
 }

@@ -40,6 +40,7 @@ import Button3 from '../assets/Button3.png'
 import Button4 from '../assets/Button4.png'
 import  Avatar  from '../assets/Avatar.jpg'
 import Logo from '../assets/Logo.png'
+import LogoFooter from '../assets/LogoFooter.png'
 
 
 
@@ -86,7 +87,8 @@ export default {
     Button3,
     Button4, 
     Avatar,
-    Logo
+    Logo,
+    LogoFooter
     
    
     

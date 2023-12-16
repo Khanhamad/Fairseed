@@ -15,7 +15,7 @@ import LinearWithValueLabel from '../LinearWithValueLabel';
     return (
         <>
             
-            <div className="card rounded-xl" style={{ width: "23rem" }}>
+            <div className="card rounded-xl" style={{ width: "22rem" }}>
                 {/* <div style={{backgroundImage:'url{blob:https://www.figma.com/23aaba04-b230-4e67-98b4-b1e815583174}'}} className="card-img-top" alt="..." >
                  <div className=' flex m-3 bg-transparent'>
                      <img src={images.TrendUp}/>
@@ -26,13 +26,13 @@ import LinearWithValueLabel from '../LinearWithValueLabel';
                 <div className="card-body">
                 <div className='flex flex-row'>
                     <img className='w-[6%] h-[6%]' src={images.Airlogo}/>
-                    <p className='text-black/40 pl-2 text-[15px]'>Teach for india Foundation</p>
+                    <p className="text-black/40 pl-2 text-[15px] " style={{fontFamily:'Satoshi Variable'}}>Teach for india Foundation</p>
                 </div>
-                <p className="card-text w-[80%] pt-2 pb-4  text-1xl font-bold">
+                <p className="card-text w-[80%] pt-2 pb-4  text-1xl font-bold " style={{fontFamily:'Satoshi Variable'}}>
                     {title}
                 </p>
-                <p className="text-black/40">
-                    <span className="font-bold text-black">₹{actualMoney}</span>
+                <p className="text-black/40" style={{fontFamily:'Satoshi Variable'}}>
+                    <span className="font-bold text-black " style={{fontFamily:'Satoshi Variable'}}>₹{actualMoney}</span>
                     funded of ₹{totalMoney}
                 </p>
                 {/* <img className="pt-1 pb-6" src={images?.range2}></img> */}
@@ -45,9 +45,9 @@ import LinearWithValueLabel from '../LinearWithValueLabel';
                 </div>
                 <div className="flex  overflow-hidden w-full">
                     <img className="w-[5%] pt-2 h-[5%]" src={icons.Threeuser} />
-                    <p className="text-black/40 pt-1.5 pl-1 text-[15px]">{userCount}</p>
+                    <p className="text-black/40 pt-1.5 pl-1 text-[15px]" style={{fontFamily:'Satoshi Variable'}}>{userCount}</p>
                     <img className="w-[9%] pt-2 pl-3  h-[5%]" src={icons.Clock} />
-                    <p className="text-black/40 pt-1.5 pl-1 text-[15px]">
+                    <p className="text-black/40 pt-1.5 pl-1 text-[15px]" style={{fontFamily:'Satoshi Variable'}}>
                     {daysLeft}
                     </p>
                     <button
@@ -56,7 +56,7 @@ import LinearWithValueLabel from '../LinearWithValueLabel';
                 >
                   <div className="flex ">
                     <img className="text-[1px]" src={images?.Coins} />
-                    <p className="pl-0.5    text-[15px] ">Donate</p>
+                    <p className="pl-0.5    text-[15px] " style={{fontFamily:'Satoshi Variable'}}>Donate</p>
                   </div>
                 </button>
               </div>

@@ -4,7 +4,9 @@
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: "'Satoshi', sans-serif"
+    },
   },
   plugins: [],
 }

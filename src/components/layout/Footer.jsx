@@ -4,7 +4,7 @@ import { TiSocialTwitter } from "react-icons/ti";
 import { GrInstagram } from "react-icons/gr";
 import { RiPinterestLine } from "react-icons/ri";
 import { RiYoutubeLine } from "react-icons/ri";
-
+import '../../Home/Home.css'
 
 
 
@@ -24,13 +24,15 @@ function Footer() {
           paddingRight: 90,
           background: "#22262F",
           gap:100,
+          fontFamily: "Satoshi, sans-serif",
+
         
         }}
       >
 
 <div className="flex mt-[140px] justify-center absolute -top-[50%] left-[50%] -translate-x-[50%]">
         <div className="footer  text-center">
-          <p className="footer_text w-[80%] ml-28">
+          <p className="footer_text w-[80%] ml-28" style={{fontFamily:'Satoshi Variable'}}>
             Ready to make an Impact? Join thousands of others today
           </p>
           <div className="flex justify-center my-10 gap-4">
@@ -47,6 +49,7 @@ function Footer() {
       >
         <img className="w-[350px] h-full " src={images.LogoFooter} />
         <div className="flex flex-col justify-start">
+          
           <a
             className="text-white font-bold"
             style={{
@@ -55,7 +58,7 @@ function Footer() {
               fontWeight: "700",
             }}
           >
-            Quik Link
+            Quick Link
           </a>
           <ul className="mt-3">
             <li>
