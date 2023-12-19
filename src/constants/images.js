@@ -53,6 +53,8 @@ import HeaderColor from '../assets/HeaderColor.svg'
 import  RocketLaunch  from '../assets/RocketLaunch.png' 
 import  coins2 from '../assets/Coins2.svg'
 import  RocketLaunch2  from '../assets/RocketLaunch2.svg'
+import ShareNetwork from '../assets/ShareNetwork.svg'
+import share_Tabs from '../assets/share_Tabs.svg'
 
 
 
@@ -112,7 +114,9 @@ export default  {
     HeaderColor,
     RocketLaunch,
     RocketLaunch2,
-    coins2
+    coins2,
+    ShareNetwork,
+    share_Tabs
 
     
    

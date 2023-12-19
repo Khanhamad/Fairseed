@@ -1,4 +1,3 @@
-import Untitled from "../assets/Logo.png";
 import * as React from "react";
 import { Fragment, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
@@ -18,10 +17,9 @@ import {
 } from "@heroicons/react/20/solid";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import someImage from "../constants/images";
-import { OutlineIconName } from "@heroicons/react/outline";
-import images from "../constants/images";
-
+// import someImage from "../../constants/images";
+// import { OutlineIconName } from "@heroicons/react/outline";
+import images from "../../constants/images";
 const products = [
   {
     name: "Analytics",
@@ -76,7 +74,7 @@ export default function Example() {
         <div className="flex lg:flex ">
           <a href="#">
             <span className="sr-only">FairSeed </span>
-            <img className="" src={Untitled} alt="FairSeed" title="FairSeed" />
+            <img className="" src={images.Logo} alt="FairSeed" title="FairSeed" />
           </a>
         </div>
 
@@ -417,7 +415,7 @@ export default function Example() {
               <span className="sr-only">Your Company</span>
               <img
                 className="h-20% w-20% py-0.1em px-0.1em"
-                src={Untitled}
+                src={images.Logo}
                 alt="FairSeed"
                 title="FairSeed"
               />

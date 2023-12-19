@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 
-export default function LinearDeterminate() {
+export default function LinearDeterminate({}) {
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
@@ -23,7 +23,7 @@ export default function LinearDeterminate() {
 
   return (
     <Box sx={{ width: '100%'}}>
-      <LinearProgress color='success' variant="determinate" value={progress} />
+      <LinearProgress color='success' variant="determinate" value={progress}  />
     </Box>
   );
   }

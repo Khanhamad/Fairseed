@@ -37,7 +37,7 @@ import LinearWithValueLabel from '../LinearWithValueLabel';
                 </p>
                 {/* <img className="pt-1 pb-6" src={images?.range2}></img> */}
                 <div className='pt-1 pb-4 '>
-                   <LinearWithValueLabel />
+                   <LinearWithValueLabel  />
            
                 {/* <ProgressBar/> */}
                 

@@ -8,7 +8,7 @@ import Card from "../components/layout/Card";
 import ScrollableTabsButtonForce from "../components/layout/ScrollableTabsButtonAuto";
 import Coursal from "../components/layout/Coursal";
 import Footer from "../components/layout/Footer";
-import Navbar from "../Navbar/Navbar";
+import Navbar from '../components/layout/Navbar'
 import DashBoard from "../components/layout/DashBoard";
 
 function Home() {
