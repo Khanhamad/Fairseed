@@ -1,0 +1,31 @@
+.scrollbar{
+    display: none;
+}
+
+
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: red !important;
+}
+
+.swiper-button-next::after{
+    color: white;
+    width: 60px;
+    height: 60px;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.32) 100%);
+    border-radius: 50%;
+    padding: 30px;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-right: 30px;
+}
+
+.swiper-button-prev{
+    color: black;
+    width: 50px;
+    padding-right: 40px;
+}

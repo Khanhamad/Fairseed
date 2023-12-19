@@ -1,4 +1,4 @@
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Pagination,  A11y } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -6,7 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+// import "swiper/css/scrollbar";
+import "./Carousal.css"
 import images from "../../constants/images";
 // let slides = [
 //   {
@@ -34,7 +35,7 @@ export default () => {
   return (
     <Swiper
       // install Swiper modules
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      modules={[Navigation, Pagination, A11y]}
       spaceBetween={50}
       slidesPerView={1}
       navigation
@@ -56,11 +57,15 @@ export default () => {
           </div>
           <div className="absolute z-[2] w-1/2 h-full top-0 left-0 bottom-0 flex flex-col px-10 justify-center">
             
-            <div className="h-fit my-auto"> <h1 className="text-4xl" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
-              Help rebuild earthquake hit school in Morocco!
-            </h1>
+            <div className="h-fit my-auto"> <p className="text- mb-4" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
+             Help rebuild earthquake hit 
+            <p className="text-4xl" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
+            schools in Morocco! 
+            </p></p>
             <p style={{ color: '#8E95A2', fontSize: 24, fontFamily: 'Satoshi', fontWeight: '500',}}>
-            Schools in Morocco are damaged severely with the recent earthquake. Help us rebuilt schools and get children back to School
+            Schools in Morocco are damaged severely with the recent earthquake.</p>
+            <p style={{ color: '#8E95A2', fontSize: 24, fontFamily: 'Satoshi', fontWeight: '500',}}>
+             Help us rebuilt schools and get children back to School.
              </p>
             <button className="p-3 text-white mt-3 font-bold text-xl" style={{ background: 'linear-gradient(71deg, #FF9F0A 0%, #FF375F 100%)', borderRadius: 8}}>
               Donate for the Cause
@@ -82,9 +87,11 @@ export default () => {
           </div>
           <div className="absolute z-[2] w-1/2 h-full top-0 left-0 bottom-0 flex flex-col px-10 justify-center">
             
-            <div className="h-fit my-auto"> <h1 className="text-4xl" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
-              Help rebuild earthquake hit school in Morocco!
-            </h1>
+          <div className="h-fit my-auto"> <p className="text- mb-4" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
+             Help rebuild earthquake hit 
+            <p className="text-4xl" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
+            schools in Morocco! 
+            </p></p>
             <p style={{ color: '#8E95A2', fontSize: 24, fontFamily: 'Satoshi', fontWeight: '500',}}>
             Schools in Morocco are damaged severely with the recent earthquake. Help us rebuilt schools and get children back to School
              </p>
@@ -109,9 +116,11 @@ export default () => {
           </div>
           <div className="absolute z-[2] w-1/2 h-full top-0 left-0 bottom-0 flex flex-col px-10 justify-center">
             
-            <div className="h-fit my-auto"> <h1 className="text-4xl" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
-              Help rebuild earthquake hit school in Morocco!
-            </h1>
+          <div className="h-fit my-auto"> <p className="text- mb-4" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
+             Help rebuild earthquake hit 
+            <p className="text-4xl" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
+            schools in Morocco! 
+            </p></p>
             <p style={{ color: '#8E95A2', fontSize: 24, fontFamily: 'Satoshi', fontWeight: '500',}}>
             Schools in Morocco are damaged severely with the recent earthquake. Help us rebuilt schools and get children back to School
              </p>
@@ -136,11 +145,14 @@ export default () => {
           </div>
           <div className="absolute z-[2]  h-full top-0 left-0 bottom-0 flex flex-col px-10 w-1/2 justify-center">
             
-            <div className="h-fit my-auto"> <h1 className="text-4xl" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
-              Help rebuild earthquake hit school in Morocco!
-            </h1>
+          <div className="h-fit my-auto"> <p className="text- mb-4" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
+             Help rebuild earthquake hit 
+            <p className="text-4xl" style={{ height: 106, color: '#25272C', fontSize: 46, fontFamily: 'Satoshi', fontWeight: '900'}}>
+            schools in Morocco! 
+            </p></p>
             <p style={{ color: '#8E95A2', fontSize: 24, fontFamily: 'Satoshi', fontWeight: '500',}}>
-            Schools in Morocco are damaged severely with the recent earthquake. Help us rebuilt schools and get children back to School
+            Schools in Morocco are damaged severely with the recent earthquake. 
+            Help us rebuilt schools and get children back to School
              </p>
             <button className="p-3 text-white mt-3 font-bold text-xl" style={{ background: 'linear-gradient(71deg, #FF9F0A 0%, #FF375F 100%),',fontFamily:'satoshi', borderRadius: 8}}>
               Donate for the Cause
@@ -150,7 +162,7 @@ export default () => {
         </div>
  
       </SwiperSlide>
-      ...
+      
     </Swiper>
   );
 };
