@@ -5,10 +5,6 @@ import LinearWithValueLabel from '../LinearWithValueLabel';
 // import ProgressBar from '../ProgressBar' 
 
 
-    let val= [
-        {actualvalue:64000,
-        totalValue:2700}
-    ]
 
 
     function Card({title,totalMoney,actualMoney,daysLeft,userCount,cardImage,avatarImage,avatarName}) {

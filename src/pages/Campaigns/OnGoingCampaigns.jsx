@@ -7,8 +7,11 @@ import { LinearProgress } from "@mui/material";
 import CampaignsTabs from "../../components/layout/CampaignsTabs";
 import Doner from "../../components/layout/Doner";
 
-function OnGoingCampaigns({ actualMoney }) {
-   
+
+
+
+function OnGoingCampaigns() {
+    
   
   return (
     <>
@@ -128,7 +131,7 @@ function OnGoingCampaigns({ actualMoney }) {
               </h1>
             </div>
             <p
-              className="text-black/40 w-[54%] text-3xl text-center py-20"
+              className="text-black/40 w-[60%] text-2xl text-center py-10"
               style={{ fontFamily: "satoshi" }}
             >
               <span className="font-bold " style={{ color: " #25272C" }}>
@@ -137,6 +140,34 @@ function OnGoingCampaigns({ actualMoney }) {
               - This campaign will collect all funds raised by Mar 24, 2023 5:30
               AM.
             </p>
+            <button className="w-[80%]"
+                style={{
+               
+                  paddingTop: 16,
+                  paddingBottom: 16,
+                  background: 'linear-gradient(71deg, #FF9F0A 0%, #FF375F 100%)',
+                  borderRadius: 8,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 10,
+                  display: "inline-flex",
+                }}
+              >
+                <div style={{ width: 38, position: "relative" }}>
+                  <img src={images.coins2} alt="" />
+                </div>
+                <div
+                  style={{
+                    color: "rgba(255, 255, 255, 0.90)",
+                    fontSize: 25,
+                    fontFamily: "Satoshi ",
+                    fontWeight: "900",
+                    wordWrap: "break-word",
+                  }}
+                >
+                  Support a Cause
+                </div>
+              </button>
           </div>
         </div>
         <div className="flex justify-start w-full">
