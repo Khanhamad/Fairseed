@@ -152,7 +152,7 @@ export default function PermanentDrawerLeft() {
               </div>
             </div>
 
-            <ToggleButtonGroup
+            {/* <ToggleButtonGroup
               
               size="small"
               color="primary"
@@ -169,7 +169,7 @@ export default function PermanentDrawerLeft() {
               <ToggleButton value="underlined" aria-label="underlined">
                 <LuPanelRight style={{ fontSize: 27 }} />
               </ToggleButton>
-            </ToggleButtonGroup>
+            </ToggleButtonGroup> */}
           </div>
         </Toolbar>
       </AppBar>

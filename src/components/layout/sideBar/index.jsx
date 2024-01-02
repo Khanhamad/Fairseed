@@ -2,8 +2,10 @@ import React from "react";
 
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-
+// import Navbar from "./Navbar";
 import DrawerBody from "./DrawerBody";
+import Navbar from "../navbar";
+
 
 export function SideBar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -16,7 +18,7 @@ export function SideBar() {
   return (
     <Box sx={{ display: "flex" }}>
       {/* <CssBaseline /> */}
-      {/* <Navbar handleDrawerToggle={handleDrawerToggle} /> */}
+      <Navbar handleDrawerToggle={handleDrawerToggle} />
       <Box
         component="nav"
         sx={{
