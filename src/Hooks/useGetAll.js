@@ -23,7 +23,7 @@ export function useGetAll(options) {
 
   return useQuery(key, () => getData(options.key, options?.params), {
     retry: false,
-    select: (data) => data?.data?.data,
+    select: (data) => data?.data,
     // onError: (err) => errorHandle(err),
     ...options,
   });

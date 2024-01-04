@@ -2,8 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import General from "../../components/AdminPanelPages/General/Index";
 import Limit from "../../components/AdminPanelPages/Limit/Index";
-import ProfilesSocial from "../../components/AdminPanelPages/Limit/ProfilesSocial/Index";
-import AdminLayout from "../../components/layout/AdminLayout";
+import ProfilesSocial from "../../components/AdminPanelPages/ProfilesSocial/Index";
 function AdminRoutes() {
   return (
       <Routes>

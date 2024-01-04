@@ -4,6 +4,7 @@ import AdminLayout from '../../components/layout/AdminLayout'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminRoutes from './AdminRoutes'
 import Dashboard from '../../components/AdminPanelPages/Dashboard/Dashboard'
+import Donation from '../../components/AdminPanelPages/Donation/Index'
 
 
 
@@ -106,7 +107,7 @@ function AdminPage() {
         path="/Donations"
         element={
           <AdminLayout>
-            <h1>Donations</h1>
+            <Donation/>
           </AdminLayout>
         }
       />

@@ -1,16 +1,11 @@
 import { Grid, Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
-// import { Dialog } from "../dialogBox";
-import SecondaryButton from "../../components/inputs/secondaryButton";
-import { colors } from "../../constants/theme"
+import { Dialog } from "../dialogBox";
+import SecondaryButton from "../../inputs/secondaryButton";
+import { colors } from "../../../constants/theme";
 import { ArrowDown, ArrowUp, Column, View } from "@carbon/icons-react";
-import CustomSwitch from "../../components/inputs/customSwitch";
-import PrimaryButton from "../../components/inputs/PrimaryButton";
-import { Dialog } from "../layout/dialogBox";
-import { FilterReset } from "@carbon/icons-react";
-
-
-
+import CustomSwitch from "../../inputs/customSwitch";
+import PrimaryButton from "../../inputs/PrimaryButton";
 
 const ManageColumns = ({
   visibleColumns,
@@ -72,7 +67,7 @@ const ManageColumns = ({
                 Show All Columns
               </SecondaryButton>
 
-              <SecondaryButton
+              {/* <SecondaryButton
                 startIcon={
                   <FilterReset
                     color={colors.primary.dark}
@@ -82,7 +77,7 @@ const ManageColumns = ({
                 }
               >
                 Reset Filters
-              </SecondaryButton>
+              </SecondaryButton> */}
             </Grid>
             <Grid item xs={12}>
               <h6> VISIBLE COLUMNS:</h6>

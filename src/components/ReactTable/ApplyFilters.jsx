@@ -2,15 +2,14 @@ import { Add, Filter, TrashCan } from "@carbon/icons-react";
 import { Badge, Box, Grid, IconButton } from "@mui/material";
 import { FieldArray, Form, Formik } from "formik";
 import React from "react";
-import { colors } from "../../constants/theme";
-import InputField from "../../components/inputs/InputField";
-import PrimaryButton from "../../components/inputs/PrimaryButton";
-import SecondaryButton from "../../components/inputs/secondaryButton";
-import SelectField from "../../components/inputs/SelectField";
-import { Dialog } from "../../components/layout/dialogBox";
+import { colors } from "../../../constants/theme";
+import InputField from "../../inputs/InputField";
+import PrimaryButton from "../../inputs/PrimaryButton";
+import SecondaryButton from "../../inputs/secondaryButton";
+import SelectField from "../../inputs/SelectField";
+import { Dialog } from "../dialogBox";
 import * as yup from "yup";
-import MultipleSelectField from "../inputs/MultipleSelectField";
-import OperatorSelectField from '../../components/inputs/operatorSelectField'
+import MultipleSelectField from "../../inputs/MultipleSelectField";
 
 const ApplyFilters = ({ allColumns, title, filters, setFilters }) => {
   const validationSchema = yup.object().shape({
@@ -24,8 +23,8 @@ const ApplyFilters = ({ allColumns, title, filters, setFilters }) => {
           .required("Column is required!"),
         operator: yup
           .object({
-            label: yup.string()
-            .required("Operator is required!"),
+            label: yup.string(),
+            // .required("Operator is required!"),
           })
           .nullable(),
       })

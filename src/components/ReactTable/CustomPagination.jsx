@@ -33,7 +33,6 @@ const CustomPagination = ({
         container
         className="d-flex align-items-center justify-content-start"
       >
-        
         <Button
           variant="contained"
           color="warning"
@@ -44,7 +43,7 @@ const CustomPagination = ({
           disabled={!canPreviousPage}
         >
           <PageFirst />
-        </Button>
+        </Button>{" "}
         <Button
           variant="contained"
           color="warning"
@@ -55,7 +54,7 @@ const CustomPagination = ({
           disabled={!canPreviousPage}
         >
           <ChevronLeft />
-        </Button>
+        </Button>{" "}
         <Button
           variant="contained"
           color="warning"
@@ -65,7 +64,7 @@ const CustomPagination = ({
           onClick={() => nextPage()}
           disabled={!canNextPage}
         >
-          
+          {" "}
           <ChevronRight />
         </Button>
         <Button
@@ -78,18 +77,18 @@ const CustomPagination = ({
           disabled={!canNextPage}
         >
           <PageLast />
-        </Button>
-        <span className="border-r-2 px-2  text-black/40">
-          Showing {" "}
+        </Button>{" "}
+        <span className="border-r-2 px-2 font-light">
+          Page{" "}
           <strong>
-          {(pageIndex*pageSize) + 1}</strong> to <strong>{((pageIndex+1)*pageSize)}</strong> of <strong>{pageOptions.length}
-          </strong>
+            {pageIndex + 1} of {pageOptions.length}
+          </strong>{" "}
         </span>
         <Grid
           item
           xs={12}
           md={6}
-          className="p-2 d-flex align-items-center text-black/40"
+          className="p-2 d-flex align-items-center font-light"
           // style={{
           //   color: "#333333",
           // }}

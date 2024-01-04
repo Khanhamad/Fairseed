@@ -38,7 +38,6 @@ function ProfilesSocial() {
       <div className="flex justify-center items-center pt-8 ">
             <button className="px-3 rounded-lg" style={{background:'linear-gradient(71deg, #FF9F0A 0%, #FF375F 100%)',fontFamily:'satoshi',color:'white'}}>Save</button>
         </div>
-      <hr className="w-full text-gray-800 mt-8"/>
     </>  )
 }
 

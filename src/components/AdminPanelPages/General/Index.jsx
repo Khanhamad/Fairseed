@@ -9,6 +9,8 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useState } from "react";
 import axios from "axios";
+import serverAPI from "../../../config/serverAPI";
+import { toast } from "react-toastify";
 
 const styleLabel = {
   fontFamily: "satoshi",
@@ -26,8 +28,8 @@ const styleInput = {
 function General() {
   const [valueText, setValueText] = useState('');
   const [value, setValue] = React.useState('off');
-  const handleChange = (event ) => {
-    setValue(event.target.value);
+  const handleChange = ( e ) => {
+    setValue(e.target.value);
   };
   const data = {id:'',title:'',body:'',userId:''};
   const [inputData,setInputData] = useState(data)
@@ -37,13 +39,15 @@ function General() {
 
   }
   const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post('https://dummyjson.com/posts/add',inputData)
+    // e.preventDefault();
+    axios.post('https://dummyjson.com/products/add',inputData)
     .then((response)=>{
-      console.log(response)
+      console.log(response.data)
+    }).then(()=>{
+      setInputData(data)
     })
     
-    alert('data has been send');  
+    toast('data has been send');  
   }
 
   return (
@@ -212,7 +216,6 @@ function General() {
       <div className="flex justify-center items-center pt-8 ">
             <button className="px-3 rounded-lg" style={{background:'linear-gradient(71deg, #FF9F0A 0%, #FF375F 100%)',fontFamily:'satoshi',color:'white'}} onClick={handleSubmit}>Save</button>
         </div>
-      <hr className="w-full text-gray-800 mt-8"/>  
     </>
   );
 }

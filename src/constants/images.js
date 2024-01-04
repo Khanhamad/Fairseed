@@ -57,6 +57,7 @@ import ShareNetwork from '../assets/ShareNetwork.svg'
 import share_Tabs from '../assets/share_Tabs.svg'
 import account from '../assets/account.svg'
 import caretDown from '../assets/caretDown.svg'
+import NoData from '../assets/NoData.svg'
 
 
 
@@ -119,7 +120,8 @@ export default  {
     coins2,
     ShareNetwork,
     account,
-    caretDown
+    caretDown,
+    NoData
 
     
    
