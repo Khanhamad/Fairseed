@@ -3,14 +3,14 @@ import { Badge, Box, Grid, IconButton } from "@mui/material";
 import { FieldArray, Form, Formik } from "formik";
 import React from "react";
 import { colors } from "../../constants/theme";
-import InputField from "../../components/inputs/InputField";
-import PrimaryButton from "../../components/inputs/PrimaryButton";
-import SecondaryButton from "../../components/inputs/secondaryButton";
-import SelectField from "../../components/inputs/SelectField";
-import { Dialog } from "../../components/layout/dialogBox";
+import InputField from "../inputs/InputField";
+import PrimaryButton from "../inputs/PrimaryButton";
+import SecondaryButton from "../inputs/secondaryButton";
+import SelectField from "../inputs/SelectField";
+import { Dialog } from "../layout/dialogBox";
 import * as yup from "yup";
 import MultipleSelectField from "../inputs/MultipleSelectField";
-import OperatorSelectField from '../../components/inputs/operatorSelectField'
+import OperatorSelectField from '../inputs/operatorSelectField'
 
 const ApplyFilters = ({ allColumns, title, filters, setFilters }) => {
   const validationSchema = yup.object().shape({

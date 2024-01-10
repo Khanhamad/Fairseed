@@ -58,7 +58,9 @@ import share_Tabs from '../assets/share_Tabs.svg'
 import account from '../assets/account.svg'
 import caretDown from '../assets/caretDown.svg'
 import NoData from '../assets/NoData.svg'
-
+import ArrowBack from '../assets/ArrowBack .svg'
+import UploadSimple from '../assets/UploadSimple.svg'
+import UploadFile from '../assets/UploadFile.svg'
 
 
 
@@ -121,7 +123,10 @@ export default  {
     ShareNetwork,
     account,
     caretDown,
-    NoData
+    NoData,
+    ArrowBack,
+    UploadSimple,
+    UploadFile
 
     
    

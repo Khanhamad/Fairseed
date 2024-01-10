@@ -5,9 +5,11 @@ import InfoIcon from "@mui/icons-material/Info";
 import { ErrorMessage, useField } from "formik";
 import { colors } from "../../../constants/theme";
 import { RiStarSFill } from "react-icons/ri";
+import images from "../../../constants/images";
+import {Button} from "@mui/material";
 
 
-const InputField = ({
+const UploadField = ({
   name,
   variant,
   info,
@@ -36,7 +38,6 @@ const InputField = ({
     minHeight: "43.95px",
     "label + &": {
       marginTop: "0.3rem",
-      marginBottom:'2rem'
     },
     "& .MuiInputBase-input": {
       borderRadius: "3px",
@@ -109,13 +110,17 @@ const InputField = ({
         sx={{ padding:'4px 8px 8px 8px',color: colors.text.main, fontSize: "20px", fontWeight:700,fontFamily:'satoshi',fontStyle:"normal",height: "22px" }}
       >
         {label}
-        <span className="text-red-600">*</span>
+        <RiStarSFill style={{fill:'var(--Status-Error, #E00000)',width:'15px',height:'80%',}} />
       </FormLabel>}
       <InputBase
         sx={styles}
         // style={{ ...configTextfield?.style }}
         {...configTextfield}
       />
+       <Button className="flex gap-1 relative">
+           <img src={images.UploadSimple} alt="" />
+           <a>Upload Documents</a>
+          </Button>
       {/* <Error`Message
         name={name}
         render={(msg) => (
@@ -126,4 +131,4 @@ const InputField = ({
   );
 };
 
-export default InputField;
+export default UploadField;

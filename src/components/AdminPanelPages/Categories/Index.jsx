@@ -8,17 +8,17 @@ const Index = () => {
     const [selectedRowID, setSelectedRowID] = useState(null);
     const columns = React.useMemo(
         () => [
-          {
-            // Header: (params)=>(<Checkbox label='' name='test'/>),
-            Header: '-',
-            accessor: "category",
-            minWidth: 100,
-            width: 100,       
-            // cell: (params)=>(<Checkbox label='' name='test'/>),
-            // Cell: ({ row }) => {
-            //   return (<Checkbox/>);
-            // },
-          },
+          // {
+          //   // Header: (params)=>(<Checkbox label='' name='test'/>),
+          //   Header: '-',
+          //   accessor: "category",
+          //   minWidth: 100,
+          //   width: 100,       
+          //   // cell: (params)=>(<Checkbox label='' name='test'/>),
+          //   // Cell: ({ row }) => {
+          //   //   return (<Checkbox/>);
+          //   // },
+          // },
           {
             Header: "ID",
             accessor: "id",
@@ -61,20 +61,18 @@ const Index = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         []
       );
-      // console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
   return (
     <div>
       <ReactTable
-        rows={[]}
-        columns={columns}
-        manualPagination
-        title={"Donations"}
-        url="/products"
-        extraQuery={{ inactive: true }}
-        addButton={<LocationConfigurationDialog />}
-        // addButton={<Button>HElloooooo</Button>}
-        selectedRowID={selectedRowID}
-        checkboxSelection={true}
+      rows={[]}
+      columns={columns}
+       manualPagination
+      title={"Categories"}
+      url="/products"
+      extraQuery={{ inactive: true }}
+       addButton={<LocationConfigurationDialog />}
+      // addButton={<Button>HElloooooo</Button>}
+      selectedRowID={selectedRowID}
       />
     </div>
   )

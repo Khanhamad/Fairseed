@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Grid,
+  LinearProgress,
   Table,
   TableBody,
   TableCell,
@@ -13,22 +14,28 @@ import {
   usePagination,
   useColumnOrder,
   useFlexLayout,
+  useExpanded,
+  useRowSelect,
 } from "react-table";
 import CustomPagination from "./CustomPagination";
 import {
   useCreateOrUpdate,
   useDebounce,
-  // useDownloadFile,
+  useDownloadFile,
   useGetAll,
-} from "../../Hooks";
-import { Search } from "../../components/inputs/Search";
-import { colors } from "../../constants/theme";
+} from "../../../hooks";
+import { Search } from "../../inputs/Search";
+import { colors } from "../../../constants/theme";
 import NoData from "./NoData";
-import SecondaryButton from "../../components/inputs/secondaryButton";
+import SecondaryButton from "../../inputs/secondaryButton";
+import { Download } from "@carbon/icons-react";
 import ManageColumns from "./ManageColumns";
 import ApplyFilters from "./ApplyFilters";
+import { toast } from "react-toastify";
 import Sorting from "./Sorting";
-import { FilterReset } from "@carbon/icons-react";
+import DownloadFileComponents from "./DownloadFileComponents";
+import errorHandle from "../../../utils/errorHandle";
+import MultiAllocateIPs from "../../manageIPs/MultiAllocateIPs";
 
 const dataGridStyles = {
   borderRadius: 0,
@@ -36,16 +43,16 @@ const dataGridStyles = {
   width: "100%",
   "& .MuiTableHead-root": {
     borderRadius: 0,
-    color: '#000',
+    color: colors.text.dark,
     "& .MuiDataGrid-columnHeaderTitleContainer": {
       padding: "2px 8px 2px 6px",
       // padding: "2px 8px 2px 6px",
     },
     "& .MuiTableCell-root.MuiTableCell-head": {
-      backgroundColor: '#e4e4e4',
+      backgroundColor: colors.primary.light,
       fontWeight: "400",
       fontFamily: "FuturaMedium",
-      color: '#000',
+      color: colors.text.dark,
       fontSize: {
         sm: "12px",
         lg: "12.5px",
@@ -72,7 +79,7 @@ const dataGridStyles = {
       xl: "14px",
     },
     fontFamily: "FuturaLight",
-    color: "#242424",
+    color: colors.tertiary.dark,
     height: "55px",
     padding: "0px 16px",
     display: "flex",
@@ -100,7 +107,7 @@ const dataGridStyles = {
     },
 
     "& .resizer.isResizing": {
-      background: '#000',
+      background: colors.primary.dark,
       width: "3px",
     },
   },
@@ -121,21 +128,26 @@ const ReactTable = ({
   title,
   url = "",
   selectedRowID,
+  renderRowSubComponent,
+  downloadExcelQuery,
+  checkboxSelection,
+  otherExtraButtons,
+  CheckFiltersForDownload,
 }) => {
   let title_slug = title?.replace(/ /g, "-");
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState("");
   const [data, setData] = useState([]);
   const [queryKey, setQueryKey] = useState("");
   const [customPageCount, setCustomPageCount] = useState(1);
   const [tableData, setTableData] = useState(
-    // ("rows" in data && data?.rows) || []
-    (data?.products) || []
+    ("rows" in data && data?.rows) || []
   );
   const [filters, setFilters] = useState(
     localStorage.getItem(`filters-of-${title_slug}`)
       ? JSON.parse(localStorage.getItem(`filters-of-${title_slug}`))
       : []
   );
+
   const [order, setOrder] = useState();
   const [sortField, setSortField] = useState();
   const [tableColumns, setTableColumns] = useState(columns || []);
@@ -147,11 +159,11 @@ const ReactTable = ({
         )
       : []
   );
+  const [fileName, setFileName] = useState(null);
 
   useEffect(() => {
     if (data) {
-      // setTableData(("rows" in data && data?.rows) || []);
-      setTableData(data?.products || []);
+      setTableData(("rows" in data && data?.rows) || []);
     }
   }, [data]);
 
@@ -170,6 +182,7 @@ const ReactTable = ({
     if (preference && JSON.parse(preference)[`columns-of-${title_slug}`]) {
       setTableMetaData(JSON.parse(preference)[`columns-of-${title_slug}`]);
     }
+    //eslint-disable-next-line
   }, []);
 
   const {
@@ -192,8 +205,9 @@ const ReactTable = ({
     setColumnOrder,
     toggleHideAllColumns,
     setHiddenColumns,
+    selectedFlatRows,
     columns: updatedColumns,
-    state: { pageIndex, pageSize },
+    state: { pageIndex, pageSize }, 
   } = useTable(
     {
       columns: tableColumns,
@@ -220,8 +234,9 @@ const ReactTable = ({
     // useBlockLayout,
     useFlexLayout,
     useResizeColumns,
-    // useExpanded,
-    usePagination
+    useExpanded,
+    usePagination,
+    useRowSelect
   );
 
   const setTableMetaData = (data) => {
@@ -267,6 +282,7 @@ const ReactTable = ({
     if (Object.keys(rows)?.length > 0) {
       setData(rows);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rows]);
 
@@ -278,7 +294,7 @@ const ReactTable = ({
   }, [refetchInside, url]);
 
   const { mutate, isLoading: mutateLoading } = useCreateOrUpdate({
-    url: `/admin/user/preference`,
+    url: `/admin/preference`,
   });
 
   const postTableMetaData = () => {
@@ -314,7 +330,7 @@ const ReactTable = ({
     return { user_preference: user_preference };
   };
 
-  const { refetch: refetchTableData } = useGetAll({
+  const { refetch: refetchTableData, isFetching } = useGetAll({
     key: url,
     params: manualPagination
       ? {
@@ -326,10 +342,12 @@ const ReactTable = ({
             column: item?.column?.id,
             operator: item?.operator?.value,
             value: Array.isArray(item?.value)
-              ? item?.value?.map(
-                  (item) =>
-                    item?.mail || item?.userPrincipalName || item?.id || item
-                )
+              ? item?.column?.id === "country" &&
+                item?.operator?.value === "equals"
+                ? item?.value?.map((i) => i?.country_id)
+                : item?.value?.map((i) => {
+                    return i?.mail || i?.userPrincipalName || i?.id || i;
+                  })
               : item?.value,
           })),
           order,
@@ -341,7 +359,6 @@ const ReactTable = ({
       setData(data);
     },
   });
-
 
   const handleSortingChange = (accessor, colOrder) => {
     setSortField(accessor);
@@ -406,9 +423,9 @@ const ReactTable = ({
   useGetAll({
     key: `/table-metadata/${title_slug}`,
     enabled: false,
-    enabled: !localStorage.getItem(`columns-of-${title}`),
+    // enabled: !localStorage.getItem(`columns-of-${title}`),
     select: (data) => {
-      return data.data;
+      return data.data.data;
     },
     onSuccess: (data) => {
       setTableMetaData(data);
@@ -417,77 +434,119 @@ const ReactTable = ({
 
   return (
     <Grid
-        container
-        className="flex flex-column gap-2 pt-4"
-        rowSpacing={2}
-        style={{ maxWidth: "100%" }}
+      container
+      className="flex flex-column"
+      rowSpacing={2}
+      style={{ maxWidth: "100%" }}
+    >
+      {/* <div style={{ maxWidth: "100%", overflowX: "auto" }}> */}
+      <Grid
+        item
+        // xs={12}
+        className="d-flex align-items-center justify-content-between flex-wrap w-full"
       >
-        {/* <div style={{ maxWidth: "100%", overflowX: "auto" }}> */}
+        <Grid item xs={12} md={5} display="flex" alignItems={"center"}>
+          {!noSearch ? (
+            <>
+              <Search
+                sx={{ width: { xs: "200px", md: "300px" } }}
+                value={query}
+                onClear={onClear}
+                onChange={onChange}
+              />
+            </>
+          ) : (
+            <div />
+          )}
+          {!noSearch && showFilter && <div className="border  py-3 mx-3"></div>}
+          {showFilter && (
+            <ApplyFilters
+              title={title}
+              allColumns={allColumns}
+              filters={filters}
+              setFilters={setFilters}
+            />
+          )}
+        </Grid>
         <Grid
           item
-          // xs={12}
-          className="d-flex align-items-center justify-content-between flex-wrap w-full"
+          xs={12}
+          md={7}
+          mt={1}
+          display="flex"
+          justifyContent="flex-end"
+          alignItems={"center"}
+          flexWrap={"wrap"}
+          rowGap={1}
         >
-          <Grid item xs={12} md={6} display="flex" alignItems={"center"}>
-            {!noSearch ? (
-              <>
-                <Search
-                  sx={{ width: { xs: "200px", md: "300px" } }}
-                  value={query}
-                  onClear={onClear}
-                  onChange={onChange}
-                />
-              </>
-            ) : (
-              <div />
-            )}
-            {!noSearch && showFilter && <div className="border  py-3 mx-3"></div>}
-            {showFilter && (
-          <ApplyFilters
-            title={title}
-            allColumns={allColumns}
-            filters={filters}
-            setFilters={setFilters}
+          <DownloadFileComponents
+            fileName={fileName}
+            setFileName={setFileName}
+            title_slug={title_slug}
           />
-        )}
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={6}
-            mt={1}
-            display="flex"
-            justifyContent="flex-end"
-          >
-            <ManageColumns
-              allColumns={allColumns}
-              setColumnOrder={setColumnOrder}
-              visibleColumns={visibleColumns}
-              toggleHideAllColumns={toggleHideAllColumns}
-              setColumnOrderArr={setColumnOrderArr}
-              mutate={mutate}
-              postTableMetaData={postTableMetaData}
-              isLoading={mutateLoading}
+          {otherExtraButtons}
+          {checkboxSelection && (
+            <MultiAllocateIPs
+              ips={data?.rows}
+              selectedRows={selectedFlatRows}
+              isAllocation={title_slug === "Free-IPs"}
             />
+          )}{" "}
+          <ManageColumns
+            allColumns={allColumns}
+            setColumnOrder={setColumnOrder}
+            visibleColumns={visibleColumns}
+            toggleHideAllColumns={toggleHideAllColumns}
+            setColumnOrderArr={setColumnOrderArr}
+            mutate={mutate}
+            postTableMetaData={postTableMetaData}
+            isLoading={mutateLoading}
+          />
+          {downloadExcel && (
             <SecondaryButton
-                startIcon={
-                  <FilterReset
-                    color={colors.primary.dark}
-                    size={"20"}
-                    className="me-1"
-                  />
+              onClick={() => {
+                if (
+                  CheckFiltersForDownload &&
+                  !filters?.some(
+                    (item) =>
+                      item?.column?.id === "location" ||
+                      item?.column?.id === "country"
+                  )
+                ) {
+                  return toast.info(
+                    "Please select atleast 1 Location or Country for downloading the Excel"
+                  );
                 }
-              >
-                Reset Filters
-              </SecondaryButton>
 
-            {addButton && <div className="border  py-3 mx-3"></div>}
-            {addButton}
-          </Grid>
-       
+                if (downloadExcelQuery) {
+                  localStorage.setItem(
+                    `file-of-${title_slug}`,
+                    `/downloads/${downloadExcelQuery?.fileName}`
+                  );
+                  toast.info("Excel Download in Progress");
+                }
+                GetExcel();
+              }}
+              isLoading={ExcelLoading}
+              loaderColor={"warning"}
+              startIcon={
+                <Download
+                  color={colors.primary.dark}
+                  size={"20"}
+                  className="me-1"
+                />
+              }
+            >
+              Download Excel
+            </SecondaryButton>
+          )}
+          {addButton && <div className="border  py-3 mx-3"></div>}
+          {addButton}
+        </Grid>
       </Grid>
-      <Grid        
+      <Grid
         item
+        // xs={12}
         sx={{
           height: !("rows" in data ? data.rows : data || []).length
             ? "500px"
@@ -498,7 +557,7 @@ const ReactTable = ({
           overflowX: "auto",
         }}
       >
-        <Table  sx={dataGridStyles} {...getTableProps()}>
+        <Table sx={dataGridStyles} {...getTableProps()}>
           <TableHead>
             {headerGroups.map((headerGroup) => (
               <TableRow
@@ -536,44 +595,87 @@ const ReactTable = ({
               </TableRow>
             ))}
           </TableHead>
-          {tableData?.length < 1 ? (
+          {isFetching ? (
+            <TableBody sx={{ border: "none" }}>
+              <TableRow sx={{ height: "10px !important", border: "none" }}>
+                <TableCell
+                  sx={{
+                    height: "10px !important",
+                    border: "none",
+                    padding: "0px !important",
+                  }}
+                >
+                  <LinearProgress
+                    color="warning"
+                    sx={{ width: "100%" }}
+                    variant="indeterminate"
+                  ></LinearProgress>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          ) : tableData?.length < 1 ? (
             <TableBody>
               <TableRow>
-                {" "}
-                <NoData />
+                {/* <TableCell> */} <NoData />
+                {/* </TableCell> */}
               </TableRow>
             </TableBody>
           ) : (
-            <TableBody {...getTableBodyProps()}>
+            <TableBody
+              className={`${isFetching ? "table-loader" : ""}`}
+              {...getTableBodyProps()}
+            >
               {page.map((row, pageIndex) => {
                 prepareRow(row);
                 return (
-                  <TableRow
-                    {...row.getRowProps({
-                      style: {
-                        background: row?.id === selectedRowID ? "#ffeee6" : "",
-                      },
-                    })}
-                    key={`${row?.id}${pageIndex}`}
-                  >
-                    {row.cells.map((cell, index) => {
-                      return (
+                  <>
+                    <TableRow
+                      {...row.getRowProps({
+                        style: {
+                          background:
+                            row?.id === selectedRowID ? "#ffeee6" : "",
+                          borderBottom: row.isExpanded
+                            ? "1px dashed #C9C5CA"
+                            : "1px solid #E0E7ED",
+                        },
+                      })}
+                      key={`${row?.id}${pageIndex}`}
+                    >
+                      {row.cells.map((cell, index) => {
+                        return (
+                          <TableCell
+                            {...cell.getCellProps({
+                              style: {
+                                minWidth: cell.column.minWidth,
+                                width: cell.column.width,
+                                height: rowHeight ? rowHeight : "40px",
+                                borderBottom: row.isExpanded
+                                  ? "none"
+                                  : "1px solid #E0E7ED",
+                              },
+                            })}
+                            key={`${cell?.value}${index}`}
+                            className="text-truncate"
+                          >
+                            {cell.render("Cell")}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                    {row.isExpanded && (
+                      <TableRow sx={{ border: `none !important` }}>
                         <TableCell
-                          {...cell.getCellProps({
-                            style: {
-                              minWidth: cell.column.minWidth,
-                              width: cell.column.width,
-                              height: rowHeight ? rowHeight : "40px",
-                            },
-                          })}
-                          key={`${cell?.value}${index}`}
-                          className="text-truncate"
+                          sx={{
+                            height: "auto !important",
+                            padding: `0 !important`,
+                          }}
+                          colSpan={visibleColumns.length}
                         >
-                          {cell.render("Cell")}
+                          {renderRowSubComponent({ row })}
                         </TableCell>
-                      );
-                    })}
-                  </TableRow>
+                      </TableRow>
+                    )}
+                  </>
                 );
               })}
             </TableBody>

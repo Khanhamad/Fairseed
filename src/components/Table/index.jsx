@@ -13,23 +13,23 @@ import {
   usePagination,
   useColumnOrder,
   useFlexLayout,
+  useRowSelect,
 } from "react-table";
 import CustomPagination from "./CustomPagination";
 import {
   useCreateOrUpdate,
   useDebounce,
-  useDownloadFile,
+  // useDownloadFile,
   useGetAll,
-} from "../../../hooks";
-import { Search } from "../../inputs/Search";
-import { colors } from "../../../constants/theme";
+} from "../../Hooks";
+import { Search } from "../inputs/Search";
+import { colors } from "../../constants/theme";
 import NoData from "./NoData";
-import SecondaryButton from "../../inputs/secondaryButton";
-import { Download } from "@carbon/icons-react";
+import SecondaryButton from "../inputs/secondaryButton";
 import ManageColumns from "./ManageColumns";
 import ApplyFilters from "./ApplyFilters";
-import { toast } from "react-toastify";
 import Sorting from "./Sorting";
+import { FilterReset } from "@carbon/icons-react";
 
 const dataGridStyles = {
   borderRadius: 0,
@@ -37,16 +37,16 @@ const dataGridStyles = {
   width: "100%",
   "& .MuiTableHead-root": {
     borderRadius: 0,
-    color: colors.text.dark,
+    color: '#000',
     "& .MuiDataGrid-columnHeaderTitleContainer": {
       padding: "2px 8px 2px 6px",
       // padding: "2px 8px 2px 6px",
     },
     "& .MuiTableCell-root.MuiTableCell-head": {
-      backgroundColor: colors.primary.light,
+      backgroundColor: '#e4e4e4',
       fontWeight: "400",
       fontFamily: "FuturaMedium",
-      color: colors.text.dark,
+      color: '#000',
       fontSize: {
         sm: "12px",
         lg: "12.5px",
@@ -101,7 +101,7 @@ const dataGridStyles = {
     },
 
     "& .resizer.isResizing": {
-      background: colors.primary.dark,
+      background: '#000',
       width: "3px",
     },
   },
@@ -122,6 +122,7 @@ const ReactTable = ({
   title,
   url = "",
   selectedRowID,
+  checkboxSelection,
 }) => {
   let title_slug = title?.replace(/ /g, "-");
   const [query, setQuery] = useState(null);
@@ -129,7 +130,8 @@ const ReactTable = ({
   const [queryKey, setQueryKey] = useState("");
   const [customPageCount, setCustomPageCount] = useState(1);
   const [tableData, setTableData] = useState(
-    ("rows" in data && data?.rows) || []
+    // ("rows" in data && data?.rows) || []
+    (data?.products) || []
   );
   const [filters, setFilters] = useState(
     localStorage.getItem(`filters-of-${title_slug}`)
@@ -150,7 +152,8 @@ const ReactTable = ({
 
   useEffect(() => {
     if (data) {
-      setTableData(("rows" in data && data?.rows) || []);
+      // setTableData(("rows" in data && data?.rows) || []);
+      setTableData(data?.products || []);
     }
   }, [data]);
 
@@ -191,6 +194,8 @@ const ReactTable = ({
     setColumnOrder,
     toggleHideAllColumns,
     setHiddenColumns,
+    useRowSelect,
+
     columns: updatedColumns,
     state: { pageIndex, pageSize },
   } = useTable(
@@ -341,16 +346,6 @@ const ReactTable = ({
     },
   });
 
-  const { refetch: GetExcel, isFetching: ExcelLoading } = useDownloadFile(
-    url,
-    {
-      ...extraQuery,
-      download: true,
-    },
-    () => {
-      toast.success("Excel Downloaded Successfully");
-    }
-  );
 
   const handleSortingChange = (accessor, colOrder) => {
     setSortField(accessor);
@@ -415,9 +410,9 @@ const ReactTable = ({
   useGetAll({
     key: `/table-metadata/${title_slug}`,
     enabled: false,
-    // enabled: !localStorage.getItem(`columns-of-${title}`),
+    enabled: !localStorage.getItem(`columns-of-${title}`),
     select: (data) => {
-      return data.data.data;
+      return data.data;
     },
     onSuccess: (data) => {
       setTableMetaData(data);
@@ -426,81 +421,77 @@ const ReactTable = ({
 
   return (
     <Grid
-      container
-      className="flex flex-column"
-      rowSpacing={2}
-      style={{ maxWidth: "100%" }}
-    >
-      {/* <div style={{ maxWidth: "100%", overflowX: "auto" }}> */}
-      <Grid
-        item
-        // xs={12}
-        className="d-flex align-items-center justify-content-between flex-wrap w-full"
+        container
+        className="flex flex-column gap-2 pt-4"
+        rowSpacing={2}
+        style={{ maxWidth: "100%" }}
       >
-        <Grid item xs={12} md={6} display="flex" alignItems={"center"}>
-          {!noSearch ? (
-            <>
-              <Search
-                sx={{ width: { xs: "200px", md: "300px" } }}
-                value={query}
-                onClear={onClear}
-                onChange={onChange}
-              />
-            </>
-          ) : (
-            <div />
-          )}
-          {!noSearch && showFilter && <div className="border  py-3 mx-3"></div>}
-          {showFilter && (
-            <ApplyFilters
-              title={title}
-              allColumns={allColumns}
-              filters={filters}
-              setFilters={setFilters}
-            />
-          )}
-        </Grid>
+        {/* <div style={{ maxWidth: "100%", overflowX: "auto" }}> */}
         <Grid
           item
-          xs={12}
-          md={6}
-          mt={1}
-          display="flex"
-          justifyContent="flex-end"
+          // xs={12}
+          className="d-flex align-items-center justify-content-between flex-wrap w-full"
         >
-          <ManageColumns
-            allColumns={allColumns}
-            setColumnOrder={setColumnOrder}
-            visibleColumns={visibleColumns}
-            toggleHideAllColumns={toggleHideAllColumns}
-            setColumnOrderArr={setColumnOrderArr}
-            mutate={mutate}
-            postTableMetaData={postTableMetaData}
-            isLoading={mutateLoading}
-          />
-          {downloadExcel && (
-            <SecondaryButton
-              onClick={() => GetExcel()}
-              isLoading={ExcelLoading}
-              loaderColor={"warning"}
-              startIcon={
-                <Download
-                  color={colors.primary.dark}
-                  size={"20"}
-                  className="me-1"
+          <Grid item xs={12} md={6} display="flex" alignItems={"center"}>
+            {!noSearch ? (
+              <>
+                <Search
+                  sx={{ width: { xs: "200px", md: "300px" } }}
+                  value={query}
+                  onClear={onClear}
+                  onChange={onChange}
                 />
-              }
-            >
-              Download Excel
-            </SecondaryButton>
-          )}
-          {addButton && <div className="border  py-3 mx-3"></div>}
-          {addButton}
-        </Grid>
+              </>
+            ) : (
+              <div />
+            )}
+            {!noSearch && showFilter && <div className="border  py-3 mx-3"></div>}
+            {showFilter && (
+          <ApplyFilters
+            title={title}
+            allColumns={allColumns}
+            filters={filters}
+            setFilters={setFilters}
+          />
+        )}
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            mt={1}
+            display="flex"
+            justifyContent="flex-end"
+          >
+            <ManageColumns
+              allColumns={allColumns}
+              setColumnOrder={setColumnOrder}
+              visibleColumns={visibleColumns}
+              toggleHideAllColumns={toggleHideAllColumns}
+              setColumnOrderArr={setColumnOrderArr}
+              mutate={mutate}
+              postTableMetaData={postTableMetaData}
+              isLoading={mutateLoading}
+            />
+            <SecondaryButton
+                startIcon={
+                  <FilterReset
+                    color={colors.primary.dark}
+                    size={"20"}
+                    className="me-1"
+                  />
+                }
+              >
+                Reset Filters
+              </SecondaryButton>
+
+            {addButton && <div className="border  py-3 mx-3"></div>}
+            {addButton}
+          </Grid>
+       
       </Grid>
-      <Grid
+      <Grid        
         item
-        // xs={12}
         sx={{
           height: !("rows" in data ? data.rows : data || []).length
             ? "500px"
@@ -511,7 +502,7 @@ const ReactTable = ({
           overflowX: "auto",
         }}
       >
-        <Table sx={dataGridStyles} {...getTableProps()}>
+        <Table  sx={dataGridStyles} {...getTableProps()}>
           <TableHead>
             {headerGroups.map((headerGroup) => (
               <TableRow

@@ -2,11 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.cdnfonts.com/css/satoshi');
- *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
- }
+body {
+  margin: 0;
+  font-family: "FuturaMedium", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ :root {
+  --primary: #fef0d2bf;
+  --sec: #ff832b;
+  --sec-ligh: #f9aa56;
+  --dark: #dfdfdf;
+  --light: #efefef;
+  --blue: rgba(43, 51, 231, 1);
+}
+
+
 .container{
   max-width: 1920px;
   margin: auto;
@@ -28,12 +46,25 @@
   width: calc(100vw - 290px);
   margin: 148px 0px 20px 270px;
   padding: 0em 1em 0em 2.2em;
+  position: fixed;
 }
 .ql-toolbar.ql-snow {
   background:#EAECF0
 }
-.ql-editor{
+/* .ql-editor{
   min-height: 150px;
+} */
+
+
+.quill {
+  height: 100%;
+}
+.ql-container {
+  height: 100% !important;
+}
+
+.ql-editor {
+  height: 100% !important;
 }
 .ql-toolbar.ql-snow + .ql-container.ql-snow{
   border-bottom-left-radius: 10px 10px;
@@ -74,4 +105,45 @@
 ::-webkit-scrollbar-thumb:hover {
   /* background: rgba(39, 76, 119, 0.7); */
   background: #d3d3d3;
+}
+
+
+
+
+/* #########################  Normal Table Stylng ############################### */
+
+.normal-table {
+  border: 1px solid #d0e2ff;
+}
+
+.normal-table th {
+  padding: 8px;
+}
+
+.normal-table > tbody > tr > td {
+  padding: 8px;
+  border: 1px solid #d0e2ff;
+}
+/* ###################### React Table #############33 */
+.sort-container {
+  display: "inline-block";
+  margin-left: 5px;
+  height: fit-content;
+  position: absolute;
+  right: 20px;
+  top: 50;
+  transform: translateX(50%);
+  z-index: 1;
+}
+
+.sort-icon {
+  cursor: pointer;
+  color: #f58220;
+  height: 17px !important;
+  width: 17px !important;
+}
+
+/* ##############STEPPER###################### */
+.css-n7tliy-MuiStep-root{
+  padding-bottom: 1rem !important;
 }

@@ -1,19 +1,20 @@
 import "./App.css";
 import AdminPage from "../src/pages/AdminPanel/AdminPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AdminLayout from "./components/layout/AdminLayout";
+import HomePage from './pages/index'
+import CreateCampaigns from "./pages/Campaigns/CreateCampaigns/Index";
 
-import AdminRoutes from "./pages/AdminPanel/AdminRoutes";
-import Dashboard from "./components/AdminPanelPages/Dashboard/Dashboard";
+
 function App() {
   return (
     <div >
       {/* <HomePage/> */}
       {/* <OnGoingCampaigns/> */}
+      <CreateCampaigns/>
 
-      <BrowserRouter>
+      {/* <BrowserRouter>
       <AdminPage/>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminRoutes from './AdminRoutes'
 import Dashboard from '../../components/AdminPanelPages/Dashboard/Dashboard'
 import Donation from '../../components/AdminPanelPages/Donation/Index'
+import  Categories  from '../../components/AdminPanelPages/Categories/Index';
 
 
 
@@ -51,7 +52,7 @@ function AdminPage() {
         path="/Categories"
         element={
           <AdminLayout>
-            <h1>Categories</h1>
+            <Categories/>
           </AdminLayout>
         }
       />
