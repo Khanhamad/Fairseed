@@ -14,7 +14,7 @@ export default function ScrollableTabsButtonForce() {
   }
 
   return (
-    <Box sx={{ maxWidth: { xs: 620, sm: 1440 }, bgcolor: 'background.paper' }}>
+    <Box sx={{ maxWidth: {sm:600, md: 774, lg: 1266 }, bgcolor: 'background.paper',}}>
       <Tabs
         value={value}
         onChange={handleChange}
@@ -22,6 +22,7 @@ export default function ScrollableTabsButtonForce() {
         scrollButtons
         allowScrollButtonsMobile
         aria-label="scrollable force tabs example"
+        
       >
         <Tab style={{color:'var(--cool-grey-cool-grey-10, #383A42)',borderRadius: 'var(--Spacing-24, 24px)',border: '1.5px solid rgb(248, 85, 85)',fontFamily:'Satoshi Variable',fontSize:'14px',fontStyle:'normal'}} label="trending" />
         <Tab style={{color:'var(--cool-grey-cool-grey-10, #383A42)',borderRadius: 'var(--Spacing-24, 24px)',border: '1.5px solid rgb(248, 85, 85)',fontFamily:'Satoshi Variable',marginLeft:'0.5rem',fontSize:'14px',fontStyle:'normal'}}  label="Scholarship" />

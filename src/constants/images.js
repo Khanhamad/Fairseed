@@ -40,6 +40,16 @@ import Button3 from '../assets/Button3.png'
 import Button4 from '../assets/Button4.png'
 import  Avatar  from '../assets/Avatar.jpg'
 import Logo from '../assets/Logo.png'
+import LogoFooter from '../assets/LogoFooter.png'
+import numberone from '../assets/numberone.png'
+import numbertwo from '../assets/numbertwo.png'
+import numberthree from '../assets/numberthree.png'
+import person from '../assets/person.svg'
+import pencicon from '../assets/pencicon.svg'
+import Home from '../assets/Home.svg'
+import RocketLaunch from '../assets/RocketLaunch.svg'
+import FooterLogo from '../assets/FooterLogo.png'
+import Coins1 from '../assets/Coins.svg'
 
 
 
@@ -86,7 +96,22 @@ export default {
     Button3,
     Button4, 
     Avatar,
-    Logo
+    Logo,
+    LogoFooter,
+    numberone,
+    numbertwo,
+    numberthree,
+    person,
+    pencicon,
+    Home,
+    RocketLaunch,
+    FooterLogo,
+    Coins1
+
+    
+    
+
+    
     
    
     

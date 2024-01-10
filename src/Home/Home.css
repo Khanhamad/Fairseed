@@ -15,4 +15,21 @@ font-size: 46px;
 font-style: normal;
 font-weight: 500;
 line-height: 130%; /* 72.8px */
+font-family: 'Satoshi', sans-serif;
 }
+
+h1{
+  font-family: 'Satoshi Variable';
+}
+
+
+/* @media screen and (min-width: 774px) and (max-width: 1365px) {
+  /* Add your responsive styles here */
+  .flexDirection\:row {
+    flex-direction: row;
+  }
+
+  /* Adjust other styles as needed */
+ 
+
+  
