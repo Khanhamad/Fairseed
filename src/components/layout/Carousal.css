@@ -29,3 +29,12 @@
     width: 50px;
     padding-right: 40px;
 }
+
+@media screen and (min-width: 774px) and (max-width: 1365px) {
+    /* Add your responsive styles here */
+    .flexDirection\:row {
+      flex-direction: row;
+    }
+  
+    /* Adjust other styles as needed */
+  }

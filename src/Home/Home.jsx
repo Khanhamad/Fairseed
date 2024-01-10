@@ -10,9 +10,20 @@ import Coursal from "../components/layout/Coursal";
 import Footer from "../components/layout/Footer";
 import Navbar from '../Navbar/Navbar';
 import DashBoard from "../components/layout/DashBoard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import Campaigns from "../pages/Campaigns1";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Home() {
+  const [campaignData, setCampaignData] = useState(null);
   
+
+
+
+
+
   let bnk = [
     {
       title: "Help me fund my College Fees for Harvard University",
@@ -21,69 +32,72 @@ function Home() {
       totalMoney: " 64,000",
       userCount: "1003",
       daysLeft: "10 Days Left",
-    },
-    {
-      title: "Help me fund my College Fees for Harvard University",
-      img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
-      actualMoney: " 2700 ",
-      totalMoney: " 64,000",
-      userCount: "1003",
-      daysLeft: "10 Days Left",
-    },
-    {
-      title: "Help me fund my College Fees for Harvard University",
-      img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
-      actualMoney: " 2700 ",
-      totalMoney: " 64,000",
-      userCount: "1003",
-      daysLeft: "10 Days Left",
-    },
-    {
-      title: "Help me fund my College Fees for Harvard University",
-      img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
-      actualMoney: " 2700 ",
-      totalMoney: " 64,000",
-      userCount: "1003",
-      daysLeft: "10 Days Left",
-    },
-    {
-      title: "Help me fund my College Fees for Harvard University",
-      img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
-      actualMoney: " 2700 ",
-      totalMoney: " 64,000",
-      userCount: "1003",
-      daysLeft: "10 Days Left",
-    },
-    {
-      title: "Help me fund my College Fees for Harvard University",
-      img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
-      actualMoney: " 2700 ",
-      totalMoney: " 64,000",
-      userCount: "1003",
-      daysLeft: "10 Days Left",
-    },
-    {
-      title: "Help me fund my College Fees for Harvard University",
-      img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
-      actualMoney: " 2700 ",
-      totalMoney: " 64,000",
-      userCount: "1003",
-      daysLeft: "10 Days Left",
-    },
-    {
-      title: "Help me fund my College Fees for Harvard University",
-      img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
-      actualMoney: " 2700 ",
-      totalMoney: " 64,000",
-      userCount: "1003",
-      daysLeft: "10 Days Left",
-    },
+    }
+    // {
+    //   title: "Help me fund my College Fees for Harvard University",
+    //   img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
+    //   actualMoney: " 2700 ",
+    //   totalMoney: " 64,000",
+    //   userCount: "1003",
+    //   daysLeft: "10 Days Left",
+    // },
+    // {
+    //   title: "Help me fund my College Fees for Harvard University",
+    //   img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
+    //   actualMoney: " 2700 ",
+    //   totalMoney: " 64,000",
+    //   userCount: "1003",
+    //   daysLeft: "10 Days Left",
+    // },
+    // {
+    //   title: "Help me fund my College Fees for Harvard University",
+    //   img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
+    //   actualMoney: " 2700 ",
+    //   totalMoney: " 64,000",
+    //   userCount: "1003",
+    //   daysLeft: "10 Days Left",
+    // },
+    // {
+    //   title: "Help me fund my College Fees for Harvard University",
+    //   img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
+    //   actualMoney: " 2700 ",
+    //   totalMoney: " 64,000",
+    //   userCount: "1003",
+    //   daysLeft: "10 Days Left",
+    // },
+    // {
+    //   title: "Help me fund my College Fees for Harvard University",
+    //   img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
+    //   actualMoney: " 2700 ",
+    //   totalMoney: " 64,000",
+    //   userCount: "1003",
+    //   daysLeft: "10 Days Left",
+    // },
+    // {
+    //   title: "Help me fund my College Fees for Harvard University",
+    //   img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
+    //   actualMoney: " 2700 ",
+    //   totalMoney: " 64,000",
+    //   userCount: "1003",
+    //   daysLeft: "10 Days Left",
+    // },
+    // {
+    //   title: "Help me fund my College Fees for Harvard University",
+    //   img: "https://deih43ym53wif.cloudfront.net/large_blue-mosque-glorius-sunset-istanbul-sultan-ahmed-turkey-shutterstock_174067919.jpg_1404e76369.jpg",
+    //   actualMoney: " 2700 ",
+    //   totalMoney: " 64,000",
+    //   userCount: "1003",
+    //   daysLeft: "10 Days Left",
+    // },
   ];
+
+  
 
   // {images: [{name:'',src:'..///'},{name:'',src:'.//'}] }
   // "https://wallpapercave.com/wp/wp3386769.jpg",
   // "https://wallpaperaccess.com/full/809523.jpg",
   // "https://getwallpapers.com/wallpaper/full/5/c/0/606489.jpg",
+
 
   let Dboard = [
     {
@@ -118,11 +132,11 @@ function Home() {
       <div className="">
         <Navbar />
       </div>
-      <div>
+      <div className=" ">
         <Coursal />
       </div>
       <div
-        className="bg-[#FFF6F5]"
+        className="bg-[#FFF6F5] md:flex lg:flex lg:flex-row md:flex-wrap lg:flex-nowrap lg:justify-between md:items-center md:justify-center md:py-5"
         style={{
           width: "100%",
           height: "100%",
@@ -130,21 +144,20 @@ function Home() {
           paddingRight: 96,
           paddingTop: 48,
           paddingBottom: 48,
-          justifyContent: "space-between",
           alignItems: "flex-start",
           display: "flex",
         }}
       >
-        {Dboard?.map((item) => {
-          return (
-            <DashBoard
-              //  DashBoardText={item.DashBoardText}
-              //  DashBoardTotal={item.DashBoardTotal}
-              //  DashBoardImg={item?.DashBoardImg}
-              data={item}
-            />
-          );
-        })}
+
+
+        <DashBoard
+        //  DashBoardText={item.DashBoardText}
+        //  DashBoardTotal={item.DashBoardTotal}
+        //  DashBoardImg={item?.DashBoardImg}
+
+        />
+
+
       </div>
       <div className="flex pt-[100px] ">
         <div className="w-full flex-wrap flex flex-col items-center mx-10">
@@ -171,41 +184,51 @@ function Home() {
                 position: "relative",
               }}
             >
-              <p className="gradient-button mb-0">
+              <a href="/Campaigns" className="gradient-button mb-0">
                 See all 724 active campaigns
-              </p>
+              </a>
             </button>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col flex-wrap w-full   py-6  mb-11 items-center">
-        <div className="flex  pt-[20px] ">
+      <div className="flex flex-wrap w-full  justify-center items-center  mb-11 ">
+
+
+        <div className="lg:flex  lg:pt-[20px] ">
           <ScrollableTabsButtonForce />
           <button
-            className="flex items-center ml-2 px-3 py-1.5"
+            className="lg:flex lg:flex-row lg:items-center lg:ml-auto md:flex md:flex-column md:items-end md:ml-auto md:mx-5 md:mt-3 sm:flex sm:flex-column sm:items-end sm:ml-auto sm:mx-5 sm:mt-5"
             style={{ backgroundColor: "rgba(255, 246, 245, 1)" }}
           >
             <img src={images.Funnel} />
             <img src={images.Filter} />
           </button>
         </div>
-        <div className="gap-4 mt-4  flex flex-wrap w-full justify-center">
+
+
+        <div className="gap-4 mt-4 flex flex-wrap w-full justify-center ">
           {bnk?.map((item) => {
             return (
               <Card
-                title={item?.title}
-                cardImage={item?.img}
-                actualMoney={item?.actualMoney}
-                totalMoney={item?.totalMoney}
-                daysLeft={item?.daysLeft}
-                userCount={item?.userCount}
+                key={item.id}
+                title={item.title}
+                cardImage={item.img}
+                actualMoney={item.actualMoney}
+                totalMoney={item.totalMoney}
+                daysLeft={item.daysLeft}
+                userCount={item.userCount}
+
               />
+
             );
           })}
+
+
         </div>
         <button
-          className="pt-[68px]"
+          className="pt-[68px]  mx-auto "
+
           style={{
             width: "fit-content",
             textAlign: "center",
@@ -220,14 +243,16 @@ function Home() {
             "-webkit-text-fill-color": "transparent",
             textDecoration: "underline",
             position: "relative",
+
           }}
         >
-          <p className="gradient-button mb-0">Load More</p>
+          <p className="gradient-button mb-0 flex flex-wrap items-center md:text-center mx-auto">Load More</p>
         </button>
       </div>
+
       <section className="bg-[#FFF6F5]">
         <div
-          className="flex flex-col flex-wrap w-full   py-8 px-7  items-center"
+          className="flex flex-col flex-wrap w-full   py-8 px-7  items-center "
           style={{ backgroundColor: "rgba(255, 246, 245, 1)" }}
         >
           <h1
@@ -236,7 +261,7 @@ function Home() {
           >
             How it Works
           </h1>
-          <div className="  grid grid-cols-11  mt-12 place-items-center  w-full ">
+          <div className="lg:grid lg:grid-cols-11  mt-12 place-items-center  w-full md:flex md:flex-col">
             <div className="col-span-3 grid grid-cols-1  place-items-center">
               <div className="">
                 <img className="w-[65%]" src={images.person} alt="" />
@@ -244,7 +269,7 @@ function Home() {
               {/* <div className="grid grid-cols-12 mt-4"> */}
               <div className="flex justify-between grid-cols-12 mt-4">
                 <div>
-                  <img className="mr-3 col-span-2" src={images.one} alt="" />
+                  <img className="mr-3 col-span-2" src={images.numberone} alt="" />
                 </div>
                 <div className=" ml-2 col-span-10">
                   <h1
@@ -277,7 +302,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            <img className="col-span-1 " src={images.Arrow} />
+            <img className="lg:col-span-1 md:rotate-90 lg:rotate-0 md:items-center md:py-5" src={images.Arrow} />
             <div className="col-span-3 grid grid-cols-1 place-items-center">
               <div className="">
                 <img className="w-[65%]" src={images.pencicon} alt="" />
@@ -285,7 +310,7 @@ function Home() {
               {/* <div className="grid grid-cols-12 mt-4"> */}
               <div className="flex justify-between grid-cols-12 mt-4">
                 <div>
-                  <img className=" mr-3 col-span-2" src={images.two} alt="" />
+                  <img className=" mr-3 col-span-2" src={images.numbertwo} alt="" />
                 </div>
                 <div className=" ml-2 col-span-10">
                   <h1
@@ -318,7 +343,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            <img className="col-span-1" src={images.Arrow} />
+            <img className="col-span-1 md:rotate-90 lg:rotate-0 md:py-5" src={images.Arrow} />
             <div className="col-span-3 grid grid-cols-1  place-items-center">
               <div className="">
                 <img className="w-[65%]" src={images.Home} alt="" />
@@ -326,7 +351,7 @@ function Home() {
               {/* <div className="grid grid-cols-12 mt-4"> */}
               <div className="flex justify-between grid-cols-12 mt-4">
                 <div>
-                  <img className="mr-3  col-span-2" src={images.three} alt="" />
+                  <img className="mr-3  col-span-2" src={images.numberthree} alt="" />
                 </div>
                 <div className=" ml-2 col-span-10">
                   <h1
@@ -372,7 +397,7 @@ function Home() {
             }}
           >
             <div style={{ width: 32, height: 32, position: "relative" }}>
-              <img src={images.RocketLaunch} alt="" />
+              <img src={images.RocketLaunch} />
             </div>
             <div
               style={{
@@ -381,7 +406,7 @@ function Home() {
                 fontFamily: "Satoshi Variable",
                 fontWeight: "900",
                 wordWrap: "break-word",
-                fontFamily:'satoshi'
+                fontFamily: 'satoshi'
               }}
             >
               Launch a Campaign Now !
@@ -405,15 +430,23 @@ function Home() {
         </p>
       </div>
       <div className="flexDirection:'row' mt-[80px] gap-5 px-[50px] ">
-      
-      <Slider />
 
-          </div>
-      <div className="">
+        <Slider />
+
+      </div>
+      <div className="md:flex md:flex-col md:max-w-screen-[774px]">
         <Footer />
       </div>
+
+
+      {/* <BrowserRouter basename="">
+      <Routes>
+        <Route path="/Campaigns" element={<Campaigns/>}/> 
+      </Routes>
+    </BrowserRouter> */}
     </>
   );
 }
+
 
 export default Home;

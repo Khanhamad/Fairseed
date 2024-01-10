@@ -53,7 +53,7 @@ const callsToAction = [
   return (
     <header className="absolute top-0 left-0 right-0 bg-transparent z-10 " style={{ backgroundColor: '#8EC5FC',
     }}>
-      <nav className=" navbar mx-auto flex max-w-9xl items-center justify-between p-6 lg:px-8" aria-label="Global" style={navbarStyle}>
+      <nav className=" navbar mx-auto flex max-w-8xl items-center justify-between p-6 lg:px-8 " aria-label="Global" style={navbarStyle}>
         <div className="flex lg:flex ">
           <a href="#" >
             <span className="sr-only">FairSeed </span>
@@ -63,7 +63,7 @@ const callsToAction = [
         
        
         
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end " >
+        {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end " > */}
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -257,14 +257,14 @@ const callsToAction = [
 
           {/* Fourth button */}
           <button>
-          <div style={{background: 'linear-gradient(71deg, #FF9F0A 0%, #FF375F 100%)', borderRadius: 8,padding: 6, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+          <div style={{background: 'linear-gradient(71deg, #FF9F0A 0%, #FF375F 100%)', borderRadius: 6,padding: 6, justifyContent: 'center', alignItems: 'center', gap: 8, display: 'flex'}}>
             <div style={{color: 'white', fontSize: 18, fontFamily: 'Satoshi Variable', fontWeight: '700', wordWrap: 'break-word'}}>Start a Campaign</div>
         </div>
           </button>
           
 
           
-            <div className="flex space-x-10">
+            <div className="flex space-x-5">
               
                 <button className="px-4 text-black bg-transparent rounded-full ">
                     <svg
@@ -289,20 +289,23 @@ const callsToAction = [
           </Popover.Group>
 
 
-        </div>
+        {/* </div> */}
 
         
         
-      </nav>
-
+     
+                      {/* open={mobileMenuOpen} onClose={setMobileMenuOpen max-w-[1365px] */}
       <Dialog as="div" className="lg:hidden max-w-[1365px]" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 ">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img className="h-20% w-20% py-0.1em px-0.1em" src={Untitled} alt="FairSeed" title="FairSeed" />
+              <img className="h-20% w-auto py-0.1em px-0.1em" src={Untitled} alt="FairSeed" title="FairSeed" />
             </a>
+
+            
+
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -319,7 +322,7 @@ const callsToAction = [
                   {({ open }) => (
                     <>
                       <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 font-['Satoshi Variable']">
-                        Product
+                        Get Involved
                         <ChevronDownIcon
                           className={(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
                           aria-hidden="true"
@@ -344,20 +347,21 @@ const callsToAction = [
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 font-['Satoshi Variable']"
                 >
-                  Features
+                  Our Impact
                 </a>
                 
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 font-['Satoshi Variable']"
                 >
-                  Company
+                  About us
                 </a>
-              </div>
-              <div className="py-2" style={{ backgroundColor: '#FBAB7E', backgroundImage: 'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 50%)', height: '100px', width: '20px' }}>
+              {/* </div> */}
+              {/* <div className="py-2" style={{ backgroundColor: '#FBAB7E', backgroundImage: 'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 50%)', height: '100px', width: '50px' }}> */}
                 <a
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 font-['Satoshi Variable']"
+                  className="-mx-3 w-full block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 font-['Satoshi Variable']"
+                  style={{ backgroundColor: '#FBAB7E', backgroundImage: 'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 50%)', height: '100px', width: '50px' }}
                 >
                   Log in
                 </a>
@@ -367,11 +371,15 @@ const callsToAction = [
         
         </Dialog.Panel>
       </Dialog>
+      </nav>  
     </header>
+    
+    
   )
 }
 
 
+  
 
 
 export default Navbar;
